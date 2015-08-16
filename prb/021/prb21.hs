@@ -5,7 +5,7 @@ divisors n = foldr accum_divisors [] $ filter (\m->n`mod`m==0) [2..r]
 
 prb21 :: IO ()
 prb21 = putStrLn $ show $ sum $ filter amicable [2..9999]
-  where d x = sum $ divisors x
+  where d x = sum $ 1:divisors x
         amicable a = let b = d a in d b == a && a /= b
 
 main :: IO ()
