@@ -1,7 +1,4 @@
-divisors :: Int -> [Int]
-divisors n = foldr accum_divisors [] $ filter (\m->n`mod`m==0) [2..r]
-  where r = (floor . sqrt . fromIntegral) n
-        accum_divisors m l = if (n`div`m) == m then m:l else m:(n`div`m):l
+import Divisors
 
 prb21 :: IO ()
 prb21 = putStrLn $ show $ sum $ filter amicable [2..9999]

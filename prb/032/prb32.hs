@@ -1,4 +1,4 @@
-import Data.List
+import Data.List (nub)
 
 perms :: [a] -> [a] -> [[a]]
 perms [] partial = [partial]

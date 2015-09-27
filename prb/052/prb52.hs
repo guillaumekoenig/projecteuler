@@ -1,4 +1,4 @@
-import Data.List
+import Data.List (sort)
 
 isPerm :: Int -> Int -> Bool
 isPerm n m = (sort $ show n) == (sort $ show m)

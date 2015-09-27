@@ -1,10 +1,6 @@
-import Data.List
+import Data.List (sort)
 import qualified Data.Map as DM
-
-divisors :: Int -> [Int]
-divisors n = foldr accum_divisors [] $ filter (\m->n`mod`m==0) [2..r]
-  where r = (floor . sqrt . fromIntegral) n
-        accum_divisors m l = if (n`div`m) == m then m:l else m:(n`div`m):l
+import Divisors
 
 decomposeProduct :: Int -> [Int] -> Int -> [Int] -> [(Int,Int)]
 decomposeProduct n ds m ds'

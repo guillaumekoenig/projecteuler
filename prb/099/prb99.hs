@@ -1,4 +1,4 @@
-import Data.List
+import Data.List (maximumBy)
 
 parse99 :: String -> (Int,Int)
 parse99 s = (read $ takeWhile (/=',') s,read $ tail $ dropWhile (/=',') s)

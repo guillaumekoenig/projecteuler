@@ -1,4 +1,4 @@
-import Data.List
+import Data.List (nub)
 import Data.Char (digitToInt)
 
 join :: (Integral a) => [(a,a,a)] -> [(a,a,a)] -> [(a,a,a)]
