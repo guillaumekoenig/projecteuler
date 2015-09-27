@@ -1,6 +1,4 @@
-import Sieve
-import Bsearch
-import Data.Array
+import IsPrime
 
 rotations :: Int -> [Int]
 rotations n = let a = show n
@@ -8,11 +6,8 @@ rotations n = let a = show n
                in map (read . cut_a) [1..length a]
 
 prb35 :: IO ()
-prb35 = let ps = sieve 1000000
-            arr = listArray (1,length ps) ps
-            isprime n = bsearch n arr (bounds arr)
-            circprime n = and $ map isprime (rotations n)
-         in putStrLn $ show $ length $ filter circprime ps
+prb35 = let circprime n = and $ map isPrime (rotations n)
+         in putStrLn $ show $ length $ filter (\n->isPrime n && circprime n) [2..1000000]
 
 main :: IO ()
 main = prb35
