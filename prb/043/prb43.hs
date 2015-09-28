@@ -14,7 +14,7 @@ prb43 = putStrLn $ show $ sum $ step3
         unique l = (length $ nub l) == length l
         step2 = filter (\(_,b,_)->unique $ show b) $ foldl1 join step1
         digitsum x = sum $ map digitToInt $ show x 
-        step3 = map (\(_,b,_)->(45-digitsum b)*10^9+b) step2
+        step3 = map (\(_,b,_)->(45-digitsum b)*10^(9::Int)+b) step2
 
 main :: IO ()
 main = prb43

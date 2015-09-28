@@ -5,8 +5,8 @@ parse99 s = (read $ takeWhile (/=',') s,read $ tail $ dropWhile (/=',') s)
 
 order99 :: (Int,Int,Int) -> (Int,Int,Int) -> Ordering
 order99 (_,b,e) (_,c,f) = t1 `compare` t2
-  where t1 = fromIntegral e*log(fromIntegral b)
-        t2 = fromIntegral f*log(fromIntegral c)
+  where t1 = fromIntegral e*log(fromIntegral b) :: Double
+        t2 = fromIntegral f*log(fromIntegral c) :: Double
 
 prb99 :: IO ()
 prb99 = do

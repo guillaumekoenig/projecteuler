@@ -11,7 +11,7 @@ prb32 = putStrLn $ show $ sum $ nub $ map (\(_,_,c)->c) res
         count xs = map extract [test1 xs,test2 xs]
         test1 xs = let y=splitAt 1 xs;z=splitAt 4 $ snd y in (fst y,fst z,snd z)
         test2 xs = let y=splitAt 2 xs;z=splitAt 3 $ snd y in (fst y,fst z,snd z)
-        extract (a,b,c) = (read a,read b,read c)
+        extract (a,b,c) = (read a,read b,read c) :: (Int,Int,Int)
         keep (a,b,c) = a*b == c
 
 main :: IO ()

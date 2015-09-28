@@ -15,7 +15,7 @@ readMatrix file = do
 
 floodFill :: M -> [(Int,Int)] -> ((Int,Int)->[(Int,Int)]) -> M
 floodFill initialArray startingPoints directions = runSTUArray $ do
-  mutableArray <- newArray (bounds initialArray) (10^6)
+  mutableArray <- newArray (bounds initialArray) 1000000
   let go p acc =
         when (inRange (bounds initialArray) p) $ do
           currentVal <- readArray mutableArray p
