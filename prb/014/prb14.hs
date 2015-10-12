@@ -1,11 +1,21 @@
+import Data.Bits
+
 -- | Memoization would help here but I had
 -- no luck so far with implementing it.
+
+-- | 20151012 Update : in fact memoization
+-- does not help because values go above
+-- 50*10^6, and the overhead of creating a
+-- large data structure is not compensated
+-- by the alleged gain in time. The speed
+-- up here is from using bit operations.
+
 collatz :: Int -> Int
 collatz n
   | n == 1 = 1
-  | n`mod`2 == 0 = 1+collatz (n`div`2)
-  | otherwise = 1+collatz (3*n+1)
+  | n.&.1 == 0 = 1+collatz (shiftR n 1)
+  | otherwise = 2+collatz (shiftR (shiftL n 1+n+1) 1)
 
 main :: IO ()
-main = print $ maxindex $ map collatz [1..1000000]
-  where maxindex xs = snd $ maximum $ zip xs [1..] :: Int
+main = print $ maxIndex $ map collatz [1..1000000]
+  where maxIndex xs = snd $ maximum $ zip xs [1..] :: Int
