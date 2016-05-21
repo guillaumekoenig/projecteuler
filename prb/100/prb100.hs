@@ -1,11 +1,27 @@
-import Isqrt
+-- Find integer solutions to:
+--   b/t*(b-1)/(t-1) = 1/2
+-- Reorder:
+--   2b(b-1) = t(t-1)
+--   2(b^2-b) = t^2-t
+--   2(b^2-b+1/4-1/4) = t^2-t+1/4-1/4
+--   2((b-1/2)^2-1/4) = (t-1/2)^2-1/4
+--   2(b-1/2)^2 - (t-1/2)^2 = -1/4 + 2/4
+--   8(b-1/2)^2 - 4(t-1/2)^2 = 1
+--   2(2b-1)^2 - (2t-1)^2 = 1
+--   (2t-1)^2 - 2(2b-1)^2 = -1
+-- Substitute x=2t-1 y=2b-1, giving the negative Pell equation:
+--   x^2 - 2y^2 = -1
+-- Which solutions are known.
+
+negativePell :: (Int,Int) -> [(Int,Int)]
+negativePell (x,y) = (x,y):negativePell (3*x+4*y,2*x+3*y)
 
 prb100 :: IO ()
-prb100 = print $ rec 1 1
-  where rec s d | n+m>10^(12::Int) = n
-                | otherwise = rec (s+d) (d+2*s)
-                where m = s`div`2
-                      n = (isqrt(8*m*m+1)+2*m+1)`div`2
+prb100 = print $ let (_,y) = head bigSolutions in b(y)
+  where bigSolutions = dropWhile notBigEnough (negativePell (x0,y0))
+        notBigEnough (x,_) = t(x)<10^(12::Int)
+        (x0,y0) = (2*21-1,2*15-1)
+        t x = (x+1)`div`2; b=t
 
 main :: IO ()
 main = prb100
