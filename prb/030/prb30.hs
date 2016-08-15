@@ -10,16 +10,15 @@
 -- 7997 combinations to test.
 
 import Combinations (combinationsRep)
+import Digits (digits)
 import Data.List (sort)
 
 prb30 :: Int
 prb30 = sum $ map value $ filter check xs
   where xs = concatMap (\k -> combinationsRep k [0..9]) [2..6]
         -- combinationsRep preserves order of elements
-        check x = (sort . digits [] . value) x == x
+        check x = (sort . digits . value) x == x
         value = sum . map (^(5::Int))
-        digits ds 0 = ds
-        digits ds n = digits (n`mod`10:ds) (n`div`10)
 
 main :: IO ()
 main = print $ prb30
