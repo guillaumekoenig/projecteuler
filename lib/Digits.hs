@@ -1,6 +1,12 @@
-module Digits (digits) where
+module Digits (
+  digits,
+  digitsBase,
+) where
 
 digits :: Int -> [Int]
-digits = digits' []
-  where digits' ds 0 = ds
-        digits' ds n = digits' (n`mod`10:ds) (n`div`10)
+digits = digitsBase 10
+
+digitsBase :: Int -> Int -> [Int]
+digitsBase = digits' []
+  where digits' ds _ 0 = ds
+        digits' ds b n = digits' (n`mod`b:ds) b (n`div`b)
