@@ -1,4 +1,4 @@
-module IsPrime (isPrime, primesUpTo) where
+module IsPrime (isPrime, primesTo) where
 
 import Isqrt
 
@@ -19,8 +19,8 @@ isPrime n
 -- variants. Also, the unsafe variants have their index
 -- starting at 0, not the lower bound index defined when
 -- creating the array.
-primesUpTo :: Int -> [Int]
-primesUpTo n = map fst $ filter snd $ assocs $ runSTUArray $ do
+primesTo :: Int -> [Int]
+primesTo n = map fst $ filter snd $ assocs $ runSTUArray $ do
   arr <- newArray (0,n) True
   unsafeWrite arr 0 False
   unsafeWrite arr 1 False
