@@ -24,8 +24,13 @@ primesUpTo n = map fst $ filter snd $ assocs $ runSTUArray $ do
   arr <- newArray (0,n) True
   unsafeWrite arr 0 False
   unsafeWrite arr 1 False
-  let markFalse = \i -> do
+  let mark = \i -> do
         i0 <- unsafeRead arr i
-        when i0 $ mapM_ (\x->unsafeWrite arr x False) [2*i,3*i..n]
-  mapM_ markFalse [2..isqrt n]
+        when i0 $ markFalse (i+i) i
+        when (i+1 <= isqrt n) $ mark (i+1)
+      markFalse = \start step ->
+        when (start <= n) $ do
+          unsafeWrite arr start False
+          markFalse (start+step) step
+  mark 2
   return arr
