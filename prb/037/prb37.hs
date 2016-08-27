@@ -1,4 +1,4 @@
-import IsPrime (primes, isPrime)
+import IsPrime (isPrime, primesUpTo)
 
 removeRight :: Int -> [Int]
 removeRight n
@@ -12,7 +12,7 @@ removeLeft n' = remove n' 10
           | otherwise = []
 
 prb37 :: Int
-prb37 = sum $ take 11 $ filter p $ dropWhile (<10) $ primes
+prb37 = sum $ take 11 $ filter p $ dropWhile (<10) $ primesUpTo 1000000
   where p x = and (map isPrime $ removeRight x) &&
               and (map isPrime $ removeLeft x)
 
