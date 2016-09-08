@@ -10,7 +10,7 @@ import Data.List (tails)
 -- the next step. See combinations and combinationsRep. Order
 -- of elements in the initial pool is preserved in the
 -- resulting combinations.
-combinations' :: ([Int] -> [Int]) -> Int -> [Int] -> [[Int]]
+combinations' :: ([a] -> [a]) -> Int -> [a] -> [[a]]
 combinations' next k ns = go [] (reverse ns)
   where go acc pool
           | length acc == k = [acc]
@@ -19,9 +19,9 @@ combinations' next k ns = go [] (reverse ns)
                 tails' = init . tails
 
 -- ^ Combinations with repetition
-combinationsRep :: Int -> [Int] -> [[Int]]
+combinationsRep :: Int -> [a] -> [[a]]
 combinationsRep = combinations' id
 
 -- ^ Combinations without repetition
-combinations :: Int -> [Int] -> [[Int]]
+combinations :: Int -> [a] -> [[a]]
 combinations = combinations' tail
