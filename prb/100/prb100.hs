@@ -9,9 +9,10 @@
 --   8(b-1/2)^2 - 4(t-1/2)^2 = 1
 --   2(2b-1)^2 - (2t-1)^2 = 1
 --   (2t-1)^2 - 2(2b-1)^2 = -1
--- Substitute x=2t-1 y=2b-1, giving the negative Pell equation:
+-- Substitute x for 2t-1, y for 2b-1:
 --   x^2 - 2y^2 = -1
--- Which solutions are known.
+-- Which is the negative Pelle equation, for which
+-- solutions are known.
 
 negativePell :: (Int,Int) -> [(Int,Int)]
 negativePell (x,y) = (x,y):negativePell (3*x+4*y,2*x+3*y)
