@@ -17,7 +17,7 @@ triplesGivenP :: Int -> [(Int,Int,Int)]
 triplesGivenP p = [(a,b,p-a-b)|
                    b<-[4..p`div`2-1],
                    (2*p*b-p*p)`mod`(2*b-2*p)==0,
-                   a<-[(2*p*b-p*p)`div`(2*b-2*p)],
+                   let a=(2*p*b-p*p)`div`(2*b-2*p),
                    a<=b]
 
 prb39 :: Int
