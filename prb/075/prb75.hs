@@ -14,7 +14,7 @@ prb75 = length $ filter (==1) $ elems $ runSTUArray $ do
           c <- unsafeRead arr pm
           unsafeWrite arr pm (c+1)
           go p (pm+p)
-  mapM_ (mark . perim) (pythagoreanPrims ((<=pmax) . perim))
+  mapM_ (mark . perim) (pythagoreanPrims2 pmax)
   return arr
 
 main :: IO ()

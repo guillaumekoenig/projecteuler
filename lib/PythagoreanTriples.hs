@@ -11,7 +11,9 @@
 
 module PythagoreanTriples (
   pythagoreanPrims,
-  pythagoreanTriples
+  pythagoreanTriples,
+
+  pythagoreanPrims2,
 ) where
 
 type Triple = (Int,Int,Int)
@@ -37,3 +39,17 @@ pythagoreanTriples insideBound = concatMap multiples primitives
   where primitives = pythagoreanPrims insideBound
         multiples (a,b,c) = (a,b,c) : (takeWhile insideBound $
                                        map (\k->(k*a,k*b,k*c)) [2..])
+
+-- Formula from the "early Greeks", again found on:
+-- http://mathworld.wolfram.com/PythagoreanTriple.html
+pythagoreanPrims2 :: Int -> [Triple]
+pythagoreanPrims2 maxPerim = [(a,b,c)
+                             |u<-[1..lim1],
+                              v<-[u+1,u+3..lim2],
+                              gcd u v==1,
+                              let a=v*v-u*u,
+                              let b=2*u*v,
+                              let c=u*u+v*v,
+                              a+b+c<=maxPerim]
+  where lim1 = floor $ sqrt (fromIntegral maxPerim/4 :: Double)
+        lim2 = floor $ sqrt (fromIntegral maxPerim :: Double)
