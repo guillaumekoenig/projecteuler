@@ -1,4 +1,3 @@
-import Data.List.Split (splitOn)
 import Data.Function.Memoize
 
 minPath :: [[Int]] -> ((Int,Int) -> Int) -> (Int,Int) -> Int
@@ -11,7 +10,7 @@ minPath matrix f (i,j) = matrix !! i !! j + min left top
 prb81 :: IO ()
 prb81 = do
   contents <- readFile "p081_matrix.txt"
-  let matrix = map (map read.splitOn ",") $ lines contents
+  let matrix = map (\line->read ("["++line++"]")) $ lines contents
   putStrLn $ show $ (memoFix $ minPath matrix) (79,79)
 
 main :: IO ()
