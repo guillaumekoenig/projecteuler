@@ -13,7 +13,7 @@ isPrime n
   | n`mod`2 == 0 || n`mod`3 == 0 = False
   | otherwise = not $ or [n`mod`i == 0 || n`mod`(i+2) == 0|i<-[5,11..isqrt n]]
 
--- ^ Your average sieve of eratosthenes
+-- Your average sieve of eratosthenes
 -- runSTUArray combined with unsafe{Read,Write} is a bit
 -- faster than used with {read,write}Array. Note that
 -- the latters do bounds checking contrary to the unsafe

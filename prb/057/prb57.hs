@@ -1,5 +1,5 @@
--- | a/b current fraction of
---   continued sqrt 2 fraction.
+-- a/b current fraction of
+-- continued sqrt 2 fraction.
 sqrconv :: (Integer,Integer) -> (Integer,Integer)
 sqrconv (a,b) = (a'`div`g,b'`div`g)
   where a' = b

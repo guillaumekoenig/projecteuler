@@ -1,6 +1,6 @@
 module Uniq (uniq,uniqBy) where
 
--- | Assume input is sorted
+-- Assume input is sorted
 uniq :: Eq a => [a] -> [a]
 uniq = uniqBy (==)
 

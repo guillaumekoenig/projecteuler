@@ -1,9 +1,9 @@
 import Data.Bits
 
--- | Memoization would help here but I had
+-- Memoization would help here but I had
 -- no luck so far with implementing it.
 
--- | 20151012 Update : in fact memoization
+-- 20151012 Update : in fact memoization
 -- does not help because values go above
 -- 50*10^6, and the overhead of creating a
 -- large data structure is not compensated
