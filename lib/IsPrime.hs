@@ -1,8 +1,8 @@
 {-# LANGUAGE FlexibleContexts #-}
 
-module IsPrime (isPrime, primesTo) where
+module Lib.IsPrime (isPrime, primesTo) where
 
-import Isqrt (isqrt)
+import Lib.Isqrt (isqrt)
 
 import Data.Array.ST (runSTUArray)
 import Data.Array.Base (newArray, assocs, unsafeRead, unsafeWrite)

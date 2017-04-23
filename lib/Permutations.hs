@@ -1,4 +1,4 @@
-module Permutations (perms) where
+module Lib.Permutations (perms) where
 
 perms :: [a] -> [[a]]
 perms xs = perms' xs []
