@@ -1,6 +1,6 @@
 module Prb.Prb3 (prb3) where
 
-import Isqrt
+import Lib.Isqrt (isqrt)
 
 primeFactors :: Int -> Int -> [Int]
 primeFactors n p

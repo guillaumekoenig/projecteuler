@@ -1,4 +1,4 @@
-module Isqrt (isqrt, isSquare, isqrtn) where
+module Lib.Isqrt (isqrt, isSquare, isqrtn) where
 
 isqrt :: Int -> Int
 isqrt = floor . (sqrt :: Double -> Double) . fromIntegral
