@@ -6,6 +6,7 @@ import Prb.Prb005
 import Prb.Prb040
 import Prb.Prb041
 import Prb.Prb042
+import Prb.Prb044
 
 main :: IO ()
 main = do print =<< prb1
@@ -16,3 +17,4 @@ main = do print =<< prb1
           print =<< prb40
           print =<< prb41
           print =<< prb42
+          print =<< prb44
