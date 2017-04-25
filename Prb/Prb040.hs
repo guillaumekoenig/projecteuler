@@ -1,4 +1,4 @@
-module Prb.Prb40 where
+module Prb.Prb040 where
 
 steps :: [(Int,Int)]
 steps = (1,1) : [(d+1,s+(10^d-10^(d-1))*d) | (d,s)<-steps]

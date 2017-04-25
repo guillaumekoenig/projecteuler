@@ -1,11 +1,11 @@
-import Prb.Prb1
-import Prb.Prb2
-import Prb.Prb3
-import Prb.Prb4
-import Prb.Prb5
-import Prb.Prb40
-import Prb.Prb41
-import Prb.Prb42
+import Prb.Prb001
+import Prb.Prb002
+import Prb.Prb003
+import Prb.Prb004
+import Prb.Prb005
+import Prb.Prb040
+import Prb.Prb041
+import Prb.Prb042
 
 main :: IO ()
 main = do print =<< prb1

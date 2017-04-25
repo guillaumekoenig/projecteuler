@@ -1,4 +1,4 @@
-module Prb.Prb4 (prb4) where
+module Prb.Prb004 (prb4) where
 
 pal :: Int -> Bool
 pal n = show n == reverse (show n)
