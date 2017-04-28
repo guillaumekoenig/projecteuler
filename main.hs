@@ -3,6 +3,7 @@ import Prb.Prb002
 import Prb.Prb003
 import Prb.Prb004
 import Prb.Prb005
+import Prb.Prb006
 import Prb.Prb040
 import Prb.Prb041
 import Prb.Prb042
@@ -14,6 +15,7 @@ main = do print =<< prb1
           print =<< prb3
           print =<< prb4
           print =<< prb5
+          print =<< prb6
           print =<< prb40
           print =<< prb41
           print =<< prb42

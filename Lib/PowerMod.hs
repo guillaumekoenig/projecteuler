@@ -1,7 +1,7 @@
-module PowerMod ((^!),powerMod) where
+module Lib.PowerMod where
 
-(^!) :: Int -> Int -> Int
-(^!) a b = a^b
+import Prelude hiding ((^))
+import Lib.Power
 
 powerMod :: Int -> Int -> Int -> Int
 powerMod _ 0 _ = 1
@@ -15,6 +15,6 @@ powerMod n k m
         --x2 = x^2
         --x2 = (4*x/4+x%4)^2
         --x2 = 4^2*(x/4)^2 + 2*4*x/4*x%4 + (x%4)^2
-        x2 = (4^!2*((x`div`4)^!2`mod`m)
+        x2 = (4^2*((x`div`4)^2`mod`m)
               + 2*4*(x`div`4)*(x`mod`4)
-              + (x`mod`4)^!2)`mod`m
+              + (x`mod`4)^2)`mod`m
