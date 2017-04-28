@@ -1,6 +1,6 @@
 {-# LANGUAGE FlexibleContexts #-}
 
-module FloodFill (
+module Lib.FloodFill (
   Matrix,
   readMatrix,
   floodFill,

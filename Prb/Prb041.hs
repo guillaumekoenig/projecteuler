@@ -10,7 +10,7 @@ import Lib.IsPrime (isPrime)
 pandigitals :: [Int]
 pandigitals = map read (go "7654321" [])
   where go [] acc = acc
-        go p@(d:ds) acc = go ds (acc ++ perms p)
+        go p acc = go (tail p) (acc ++ perms p)
 
 prb41 :: IO Int
 prb41 = return (head (filter isPrime pandigitals))

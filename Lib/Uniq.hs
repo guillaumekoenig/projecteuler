@@ -1,4 +1,4 @@
-module Uniq (uniq,uniqBy) where
+module Lib.Uniq (uniq,uniqBy) where
 
 -- Assume input is sorted
 uniq :: Eq a => [a] -> [a]

@@ -1,6 +1,6 @@
-module Divisors (divisors) where
+module Lib.Divisors (divisors) where
 
-import Isqrt (isqrt, isSquare)
+import Lib.Isqrt (isqrt, isSquare)
 
 divisors' :: Int -> Int -> [Int]
 divisors' n lim = foldr both [] $ filter divisor [2..lim]

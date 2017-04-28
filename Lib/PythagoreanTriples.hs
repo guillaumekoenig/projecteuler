@@ -15,7 +15,7 @@
 -- provide better locality and hence be better on the
 -- caches.
 
-module PythagoreanTriples (
+module Lib.PythagoreanTriples (
   pythagoreanPrims,
   pythagoreanPrims2,
 ) where

@@ -1,4 +1,4 @@
-module Combinations (
+module Lib.Combinations (
   combinationsRep,
   combinations,
 ) where

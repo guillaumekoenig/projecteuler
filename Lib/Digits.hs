@@ -1,4 +1,4 @@
-module Digits (
+module Lib.Digits (
   digits,
   digitsBase,
 ) where

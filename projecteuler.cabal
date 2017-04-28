@@ -42,7 +42,7 @@ cabal-version:       >=1.10
 
 executable projecteuler
   -- .hs or .lhs file containing the Main module.
-  main-is:             main.hs
+  main-is:             Main.hs
   
   -- Modules included in this executable, other than Main.
   -- other-modules:       
@@ -51,7 +51,7 @@ executable projecteuler
   other-extensions:    FlexibleContexts
   
   -- Other library packages from which modules are imported.
-  build-depends:       base >=4.9 && <4.10, array >=0.5 && <0.6
+  build-depends:       base >=4.9 && <4.10, array >=0.5 && <0.6, memoize, vector, containers
   
   -- Directories containing source files.
   -- hs-source-dirs:      
@@ -59,3 +59,4 @@ executable projecteuler
   -- Base language which the package is written in.
   default-language:    Haskell2010
   
+  ghc-options:         -Wall -O

@@ -1,5 +1,8 @@
 module Prb.Prb040 where
 
+import Prelude hiding ((^))
+import Lib.Power
+
 steps :: [(Int,Int)]
 steps = (1,1) : [(d+1,s+(10^d-10^(d-1))*d) | (d,s)<-steps]
 
