@@ -1,6 +1,6 @@
 {-# LANGUAGE FlexibleContexts #-}
 
-module Lib.IsPrime (isPrime, primesTo) where
+module Lib.IsPrime (isPrime, primeFactors, primesTo) where
 
 import Lib.Isqrt (isqrt)
 
@@ -12,6 +12,16 @@ isPrime n
   | n <= 3 = n > 1
   | n`mod`2 == 0 || n`mod`3 == 0 = False
   | otherwise = not $ or [n`mod`i == 0 || n`mod`(i+2) == 0|i<-[5,11..isqrt n]]
+
+primeFactors :: Int -> [Int]
+primeFactors n
+  | n`mod`2 == 0 = 2 : go (skip 2 (n`div`2)) 3
+  | otherwise = go n 3
+  where go m p
+          | p > isqrt m = if m > 1 then [m] else []
+          | m`mod`p == 0 = p : go (skip p (m`div`p)) p
+          | otherwise = go m (p+2)
+        skip p = until (\x->x`mod`p/=0) (`div`p)
 
 -- Your average sieve of eratosthenes
 -- runSTUArray combined with unsafe{Read,Write} is a bit
