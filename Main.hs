@@ -50,6 +50,7 @@ import Prb.Prb049
 import Prb.Prb050
 import Prb.Prb051
 import Prb.Prb052
+import Prb.Prb053
 import Prb.Prb054
 import Prb.Prb057
 import Prb.Prb059
@@ -123,6 +124,7 @@ main = do print =<< prb1
           print =<< prb50
           print =<< prb51
           print =<< prb52
+          print =<< prb53
           print =<< prb54
           print =<< prb57
           print =<< prb59
