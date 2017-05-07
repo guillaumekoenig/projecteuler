@@ -55,6 +55,7 @@ import Prb.Prb054
 import Prb.Prb055
 import Prb.Prb056
 import Prb.Prb057
+import Prb.Prb058
 import Prb.Prb059
 import Prb.Prb061
 import Prb.Prb065
@@ -131,6 +132,7 @@ main = do print =<< prb1
           print =<< prb55
           print =<< prb56
           print =<< prb57
+          print =<< prb58
           print =<< prb59
           print =<< prb61
           print =<< prb65
