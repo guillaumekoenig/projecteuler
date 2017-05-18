@@ -11,7 +11,7 @@ import Data.List (tails)
 -- of elements in the initial pool is preserved in the
 -- resulting combinations.
 combinations' :: ([a] -> [a]) -> Int -> [a] -> [[a]]
-combinations' next k ns = go [] (reverse ns)
+combinations' next k ns = map reverse (go [] ns)
   where go acc pool
           | length acc == k = [acc]
           | otherwise = concatMap recur (tails' pool)
