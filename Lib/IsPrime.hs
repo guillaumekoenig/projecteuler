@@ -1,6 +1,6 @@
 {-# LANGUAGE FlexibleContexts #-}
 
-module Lib.IsPrime (isPrime, primeFactors, primesTo) where
+module Lib.IsPrime (isPrime, primeFactors, primeFactors2, primesTo) where
 
 import Lib.Isqrt (isqrt)
 
@@ -14,15 +14,20 @@ isPrime n
   | n`rem`2 == 0 || n`rem`3 == 0 = False
   | otherwise = not $ or [n`rem`i == 0 || n`rem`(i+2) == 0|i<-[5,11..isqrt n]]
 
-primeFactors :: Int -> [Int]
-primeFactors n
-  | n`mod`2 == 0 = 2 : go (skip 2 (n`div`2)) 3
+primeFactors2 :: Int -> [(Int,Int)]
+primeFactors2 n
+  | n`rem`2 == 0 = let (n',c) = skip 2 (n`quot`2) in (2,c+1) : go n' 3
   | otherwise = go n 3
   where go m p
-          | p > isqrt m = if m > 1 then [m] else []
-          | m`mod`p == 0 = p : go (skip p (m`div`p)) p
+          | p > isqrt m = if m > 1 then [(m,1)] else []
+          | m`rem`p == 0 = let (n',c) = skip p (m`quot`p) in (p,c+1) : go n' p
           | otherwise = go m (p+2)
-        skip p = until (\x->x`mod`p/=0) (`div`p)
+        skip p m = case quotRem m p of
+                     (q, 0) -> (\(a,c)->(a,c+1)) $ skip p q
+                     (_, _) -> (m, 0)
+
+primeFactors :: Int -> [Int]
+primeFactors = map fst . primeFactors2
 
 -- Your average sieve of eratosthenes
 -- runSTUArray combined with unsafe{Read,Write} is a bit
