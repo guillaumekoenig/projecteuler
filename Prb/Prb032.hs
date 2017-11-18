@@ -1,13 +1,29 @@
 module Prb.Prb032 where
 
-import Data.List (nub)
-import Lib.Permutations (perms)
+import Data.Bits
+import Data.List
+import Lib.Combinations
+import Lib.Permutations
+import Lib.Digits
+
+-- gives [1..9] \ xs
+setDiff :: [Int] -> [Int]
+setDiff xs = bitList (xsbits `xor` fullbits) 1 []
+  where xsbits = foldl setBit 0 xs :: Int
+        fullbits = (bit 10-1)-1
+        bitList 0 _ ds = ds
+        bitList n d ds = if testBit n 1 then d:rest else rest
+          where rest = bitList (shiftR n 1) (d+1) ds
+
+explore :: Int -> Int -> [Int]
+explore x y = [product_ |
+                a<-combinations x (setDiff []),
+                b<-combinations y (setDiff a),
+                a'<-map undigits $ perms a,
+                b'<-map undigits $ perms b,
+                let product_ = a'*b',
+                let set = a ++ b ++ digits product_,
+                null (setDiff set) && length set == 9]
 
 prb32 :: IO Int
-prb32 = return $ sum $ nub $ map (\(_,_,c)->c) res
-  where res = filter keep $ concatMap count $ perms "123456789"
-        count xs = map extract [test1 xs,test2 xs]
-        test1 xs = let y=splitAt 1 xs;z=splitAt 4 $ snd y in (fst y,fst z,snd z)
-        test2 xs = let y=splitAt 2 xs;z=splitAt 3 $ snd y in (fst y,fst z,snd z)
-        extract (a,b,c) = (read a,read b,read c) :: (Int,Int,Int)
-        keep (a,b,c) = a*b == c
+prb32 = return $ sum (nub $ explore 4 1 ++ explore 3 2)

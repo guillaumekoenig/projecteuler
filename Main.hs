@@ -39,7 +39,7 @@ main = do results <- runAll prbs
           let labeled = zipWith (\a (b,c)->(a,b,c)) [1..] results
           let orderDesc = sortBy (flip $ comparing thd) labeled
           let totalTime = sum $ map snd results
-          let pp (n,r,t) = "Prb #" ++ show n ++ ": " ++ show r
-                ++ "    \t(" ++ show t ++ ")"
+          let pp (n,r,t) = "Prb #" ++ show (n::Int) ++ ": "
+                ++ show r ++ "    \t(" ++ show t ++ ")"
           mapM_ (putStrLn . pp) orderDesc
           putStrLn $ "\nTotal: " ++ show totalTime
