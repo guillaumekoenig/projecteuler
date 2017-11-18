@@ -1,4 +1,4 @@
-module Prb.Prb018 where
+module Prb.Prb018 (prb18) where
 
 maxPath :: [[Int]] -> Int
 maxPath xs = maximum $ map (go (l-1)) [0..l-1]
