@@ -3,6 +3,7 @@ module Main where
 import Data.Time.Clock
 import Data.Ord
 import Data.List
+import System.Environment
 
 import Problems
 
@@ -35,8 +36,11 @@ thd :: (a,b,c) -> c
 thd (_,_,x) = x
 
 main :: IO ()
-main = do results <- runAll prbs
-          let labeled = zipWith (\a (b,c)->(a,b,c)) [1..] results
+main = do args <- getArgs
+          let is = if length args > 0 then map read args
+                   else [1 .. length prbs]
+          results <- runAll [prbs !! (i-1) | i<-is]
+          let labeled = zipWith (\a (b,c)->(a,b,c)) is results
           let orderDesc = sortBy (flip $ comparing thd) labeled
           let totalTime = sum $ map snd results
           let pp (n,r,t) = "Prb #" ++ show (n::Int) ++ ": "
