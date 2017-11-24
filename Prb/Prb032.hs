@@ -1,4 +1,4 @@
-module Prb.Prb032 where
+module Prb.Prb032 (prb32) where
 
 import Data.Bits
 import Data.List
