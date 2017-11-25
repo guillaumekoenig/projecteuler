@@ -1,6 +1,5 @@
 module Prb.Prb098 (prb98) where
 
-import Lib.Uniq
 import Lib.Isqrt
 import Data.Ord
 import Data.List
@@ -27,7 +26,7 @@ getSquare [] = error "Unexpected empty list"
 getSquare [_] = error "Unexpected singleton"
 getSquare (a:a':_) = maximum $ map work candidates
   where candidates = filter match (squaresLen (length a))
-        match z = let cnt l = length . uniq . sort $ l
+        match z = let cnt l = length . nub $ l
                       s = show z :: [Char]
                   in cnt a==cnt s && cnt s==cnt (zip a s)
         work n = check n $ permute a a' (show n::[Char])
