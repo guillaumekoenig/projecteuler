@@ -2,7 +2,9 @@ module Prb.Prb059 (prb59) where
 
 import Data.Char (ord)
 import Data.Bits (xor)
-import qualified Data.Vector as V
+import Data.Ord (comparing)
+import Data.List (maximumBy)
+import Data.Array (accumArray, assocs)
 
 zip' :: [a] -> [[a]] -> [[a]]
 zip' [] ys = ys
@@ -14,8 +16,8 @@ groupIndexMod n [] = take n $ repeat []
 groupIndexMod n xs = zip' (take n xs) (groupIndexMod n (drop n xs))
 
 mostFrequent :: [Int] -> Int
-mostFrequent xs = V.maxIndex $ V.accum (+) zeros $ zip xs [1,1..]
-  where zeros = V.replicate 256 (0::Int)
+mostFrequent xs = fst $ maximumBy (comparing snd) $ assocs $ histogram
+  where histogram = accumArray (+) (0::Int) (0,255) $ zip xs [1,1..]
 
 decryptedSum :: [Int] -> Int
 decryptedSum xs = sum $ zipWith xor xs (cycle key)
