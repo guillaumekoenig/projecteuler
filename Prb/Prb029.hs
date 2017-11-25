@@ -6,7 +6,6 @@ module Prb.Prb029 (prb29) where
 -- it to some power.
 
 import Lib.Isqrt
-import Lib.Uniq
 import Data.List (sort)
 
 primeSig :: Int -> [(Int,Int)]
@@ -22,6 +21,11 @@ primeSig x = extractPowers x (2:[3,5..isqrt x])
           | n`mod`p /= 0 = (n,0)
           | otherwise = let (n',k) = extractPower (n`div`p) p
                         in (n',k+1)
+
+uniq :: Eq a => [a] -> [a]
+uniq [] = []
+uniq [x] = [x]
+uniq (x:y:ys) = if x == y then uniq (y:ys) else y:uniq (y:ys)
 
 prb29 :: IO Int
 prb29 = return $ length $ uniq $ sort [pow (primeSig a) b | a<-r, b<-r]
