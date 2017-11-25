@@ -1,4 +1,4 @@
-module Prb.Prb065 where
+module Prb.Prb065 (prb65) where
 
 import Data.Char
 

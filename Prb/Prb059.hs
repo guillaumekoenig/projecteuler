@@ -1,4 +1,4 @@
-module Prb.Prb059 where
+module Prb.Prb059 (prb59) where
 
 import Data.Char (ord)
 import Data.Bits (xor)

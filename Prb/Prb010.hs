@@ -1,4 +1,4 @@
-module Prb.Prb010 where
+module Prb.Prb010 (prb10) where
 
 import Lib.IsPrime
 

@@ -1,4 +1,4 @@
-module Prb.Prb028 where
+module Prb.Prb028 (prb28) where
 
 -- lower left diagonal is made of even numbers squared plus 1.
 -- upper left is the same with an arithmetic progression with

@@ -1,7 +1,7 @@
 {-# LANGUAGE BangPatterns #-}
 {-# LANGUAGE FlexibleContexts #-}
 
-module Prb.Prb088 where
+module Prb.Prb088 (prb88) where
 
 import Lib.Isqrt
 import Lib.FoldUniq

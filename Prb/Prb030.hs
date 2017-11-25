@@ -1,4 +1,4 @@
-module Prb.Prb030 where
+module Prb.Prb030 (prb30) where
 
 -- With number of digits fixed at d, the largest number we can
 -- obtain is d*9^5. Comparing its length to d the number of

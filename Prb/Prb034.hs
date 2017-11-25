@@ -1,4 +1,4 @@
-module Prb.Prb034 where
+module Prb.Prb034 (prb34) where
 
 -- Similar to prb 30, floor(log10(d*9!))-d is negative with d the
 -- number of digits from 8 onwards. All solutions have 7 digits

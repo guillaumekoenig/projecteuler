@@ -1,4 +1,4 @@
-module Prb.Prb002 where
+module Prb.Prb002 (prb2) where
 
 fib :: [Int]
 fib = 1 : 2 : [x+y | (x,y)<-zip fib (tail fib)]

@@ -1,4 +1,4 @@
-module Prb.Prb041 where
+module Prb.Prb041 (prb41) where
 
 import Lib.Permutations (perms)
 import Lib.IsPrime (isPrime)

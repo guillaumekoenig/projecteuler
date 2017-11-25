@@ -1,4 +1,4 @@
-module Prb.Prb060 where
+module Prb.Prb060 (prb60) where
 
 -- We can't test all sets of 5 primes because their
 -- number grows very quickly:

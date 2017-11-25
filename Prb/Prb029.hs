@@ -1,4 +1,4 @@
-module Prb.Prb029 where
+module Prb.Prb029 (prb29) where
 
 -- Integers > 1 have a distinct and unique decomposition in prime
 -- numbers. Two numbers are equal if their prime decomposition are

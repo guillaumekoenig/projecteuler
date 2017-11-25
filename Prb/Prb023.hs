@@ -1,4 +1,4 @@
-module Prb.Prb023 where
+module Prb.Prb023 (prb23) where
 
 import Lib.Divisors (divisors)
 import Data.Array.ST

@@ -1,4 +1,4 @@
-module Prb.Prb017 where
+module Prb.Prb017 (prb17) where
 
 deci :: [String]
 deci = ["", "one","two","three","four","five"]

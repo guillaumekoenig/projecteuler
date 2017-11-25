@@ -1,4 +1,4 @@
-module Prb.Prb021 where
+module Prb.Prb021 (prb21) where
 
 import Lib.Divisors
 

@@ -1,4 +1,4 @@
-module Prb.Prb053 where
+module Prb.Prb053 (prb53) where
 
 choose :: Int -> Int -> Int
 choose _ 0 = 1

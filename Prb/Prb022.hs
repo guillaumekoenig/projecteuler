@@ -1,4 +1,4 @@
-module Prb.Prb022 where
+module Prb.Prb022 (prb22) where
 
 import Data.List (sort)
 import Data.Char (ord)

@@ -1,4 +1,4 @@
-module Prb.Prb052 where
+module Prb.Prb052 (prb52) where
 
 import Data.List (sort)
 

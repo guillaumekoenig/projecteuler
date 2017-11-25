@@ -1,4 +1,4 @@
-module Prb.Prb075 where
+module Prb.Prb075 (prb75) where
 
 import Data.Int (Int8)
 import Data.Array.ST (runSTUArray)

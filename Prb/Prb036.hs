@@ -1,4 +1,4 @@
-module Prb.Prb036 where
+module Prb.Prb036 (prb36) where
 
 import Lib.Digits (digitsBase)
 

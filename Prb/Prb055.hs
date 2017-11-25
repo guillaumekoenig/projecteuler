@@ -1,4 +1,4 @@
-module Prb.Prb055 where
+module Prb.Prb055 (prb55) where
 
 lychrel :: Integer -> Bool
 lychrel = null . dropWhile notpal . take 50 . iterate p . p

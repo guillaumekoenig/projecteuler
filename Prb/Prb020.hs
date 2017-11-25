@@ -1,4 +1,4 @@
-module Prb.Prb020 where
+module Prb.Prb020 (prb20) where
 
 import Data.Char (digitToInt)
 

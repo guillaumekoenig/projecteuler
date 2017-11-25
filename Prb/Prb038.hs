@@ -1,4 +1,4 @@
-module Prb.Prb038 where
+module Prb.Prb038 (prb38) where
 
 import Lib.Combinations (combinations)
 import Lib.Permutations (perms)

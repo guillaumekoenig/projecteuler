@@ -1,4 +1,4 @@
-module Prb.Prb049 where
+module Prb.Prb049 (prb49) where
 
 import Lib.IsPrime (primesTo)
 import Data.List (sort)

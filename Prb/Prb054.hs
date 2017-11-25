@@ -1,4 +1,4 @@
-module Prb.Prb054 where
+module Prb.Prb054 (prb54) where
 
 import Data.Ord
 import Data.List

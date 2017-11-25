@@ -1,4 +1,4 @@
-module Prb.Prb090 where
+module Prb.Prb090 (prb90) where
 
 chooseK :: Int -> [Int] -> [Int] -> [[Int]]
 chooseK k pool v

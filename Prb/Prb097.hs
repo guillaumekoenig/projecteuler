@@ -1,4 +1,4 @@
-module Prb.Prb097 where
+module Prb.Prb097 (prb97) where
 
 import Prelude hiding ((^))
 import Lib.Power

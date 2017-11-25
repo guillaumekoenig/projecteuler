@@ -1,4 +1,4 @@
-module Prb.Prb061 where
+module Prb.Prb061 (prb61) where
 
 import Data.List (permutations)
 

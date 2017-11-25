@@ -1,4 +1,4 @@
-module Prb.Prb039 where
+module Prb.Prb039 (prb39) where
 
 -- For a given perimeter p, find all pythagorean triple
 --   a^2+b^2=c^2

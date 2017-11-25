@@ -1,4 +1,4 @@
-module Prb.Prb099 where
+module Prb.Prb099 (prb99) where
 
 import Data.List (maximumBy)
 

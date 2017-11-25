@@ -1,4 +1,4 @@
-module Prb.Prb024 where
+module Prb.Prb024 (prb24) where
 
 nthPerm :: [a] -> Int -> [a]
 nthPerm [] _ = []

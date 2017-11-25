@@ -1,4 +1,4 @@
-module Prb.Prb008 where
+module Prb.Prb008 (prb8) where
 import Data.Char (digitToInt)
 
 prb8 :: IO Int

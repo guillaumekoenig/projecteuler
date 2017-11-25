@@ -1,4 +1,4 @@
-module Prb.Prb014 where
+module Prb.Prb014 (prb14) where
 
 import Data.Bits
 

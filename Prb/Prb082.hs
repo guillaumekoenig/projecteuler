@@ -1,4 +1,4 @@
-module Prb.Prb082 where
+module Prb.Prb082 (prb82) where
 
 import Lib.FloodFill (readMatrix, floodFill, bounds, (!))
 

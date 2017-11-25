@@ -1,4 +1,4 @@
-module Prb.Prb007 where
+module Prb.Prb007 (prb7) where
 import Lib.IsPrime
 
 prb7 :: IO Int

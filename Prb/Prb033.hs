@@ -1,4 +1,4 @@
-module Prb.Prb033 where
+module Prb.Prb033 (prb33) where
 
 simplify :: (Int,Int) -> (Int,Int)
 simplify (n,d)

@@ -1,4 +1,4 @@
-module Prb.Prb011 where
+module Prb.Prb011 (prb11) where
 
 import Data.Array
 

@@ -1,4 +1,4 @@
-module Prb.Prb015 where
+module Prb.Prb015 (prb15) where
 
 import Data.Function.Memoize
 

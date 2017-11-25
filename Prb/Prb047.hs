@@ -1,4 +1,4 @@
-module Prb.Prb047 where
+module Prb.Prb047 (prb47) where
 
 import Lib.IsPrime (primeFactors)
 

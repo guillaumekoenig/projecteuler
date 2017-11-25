@@ -1,4 +1,4 @@
-module Prb.Prb005 where
+module Prb.Prb005 (prb5) where
 
 import Data.Array (array, accum, assocs)
 import Lib.IsPrime (primeFactors2)

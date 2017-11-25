@@ -1,4 +1,4 @@
-module Prb.Prb031 where
+module Prb.Prb031 (prb31) where
 
 howManyWays :: Int -> Int -> [Int] -> Int
 howManyWays target acc coins

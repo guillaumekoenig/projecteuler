@@ -1,4 +1,4 @@
-module Prb.Prb085 where
+module Prb.Prb085 (prb85) where
 
 -- For a grid nxm, a rectangle bxh, there are
 -- (n-b+1)*(m-h+1) such rectangles; total will

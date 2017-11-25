@@ -1,4 +1,4 @@
-module Prb.Prb043 where
+module Prb.Prb043 (prb43) where
 
 import Data.List (nub)
 import Data.Char (digitToInt)

@@ -1,6 +1,6 @@
 {-# LANGUAGE FlexibleContexts #-} -- Huh ?
 
-module Prb.Prb087 where
+module Prb.Prb087 (prb87) where
 
 -- You can get out of monad via runST for the ST
 -- monad, and cannot get out of it for the IO monad

@@ -1,4 +1,4 @@
-module Prb.Prb019 where
+module Prb.Prb019 (prb19) where
 
 nbDaysInMonth :: Int -> Int
 nbDaysInMonth m = rough - if m`mod`12 == 1 then

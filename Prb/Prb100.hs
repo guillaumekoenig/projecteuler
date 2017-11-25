@@ -14,7 +14,7 @@
 -- Which is the negative Pelle equation, for which
 -- solutions are known.
 
-module Prb.Prb100 where
+module Prb.Prb100 (prb100) where
 
 negativePell :: (Int,Int) -> [(Int,Int)]
 negativePell (x,y) = (x,y):negativePell (3*x+4*y,2*x+3*y)

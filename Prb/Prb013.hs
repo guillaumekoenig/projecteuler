@@ -1,4 +1,4 @@
-module Prb.Prb013 where
+module Prb.Prb013 (prb13) where
 
 prb13 :: IO Int
 prb13 = do

@@ -1,4 +1,4 @@
-module Prb.Prb027 where
+module Prb.Prb027 (prb27) where
 
 -- brute force 4 million possibilities
 -- can we do better ?

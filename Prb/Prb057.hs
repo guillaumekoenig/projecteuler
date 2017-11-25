@@ -1,4 +1,4 @@
-module Prb.Prb057 where
+module Prb.Prb057 (prb57) where
 
 -- a/b current fraction of
 -- continued sqrt 2 fraction.

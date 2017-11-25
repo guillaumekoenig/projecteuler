@@ -1,4 +1,4 @@
-module Prb.Prb009 where
+module Prb.Prb009 (prb9) where
 
 import Lib.Isqrt
 

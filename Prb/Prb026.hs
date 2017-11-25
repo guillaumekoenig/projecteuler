@@ -1,4 +1,4 @@
-module Prb.Prb026 where
+module Prb.Prb026 (prb26) where
 
 -- Repeating decimals can be converted back to fractions by observing
 --   1/9   = 0.111111111...

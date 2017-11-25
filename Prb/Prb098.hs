@@ -1,4 +1,4 @@
-module Prb.Prb098 where
+module Prb.Prb098 (prb98) where
 
 import Lib.Uniq
 import Lib.Isqrt
