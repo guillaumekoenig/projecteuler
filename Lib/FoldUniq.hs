@@ -12,8 +12,8 @@ foldUniq :: (Int,Int) -> (a -> Int -> a) -> a -> [Int] -> a
 foldUniq bnds f acc0 xs = runST $ do
   seen <- newArray bnds False :: ST s (STUArray s Int Bool)
   let go acc x = do
-        b <- readArray seen x
+        b <- unsafeRead seen x
         if b then return acc
-          else do writeArray seen x True
+          else do unsafeWrite seen x True
                   return (f acc x)
   foldM go acc0 xs

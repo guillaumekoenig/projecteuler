@@ -11,9 +11,7 @@ module Prb.Prb087 (prb87) where
 import Prelude hiding ((^))
 import Lib.Power ((^))
 
-import Control.Monad.ST (ST, runST)
-import Data.Array.ST (newArray, STUArray)
-import Data.Array.Base (unsafeRead, unsafeWrite)
+import Lib.FoldUniq (foldUniq)
 import Lib.IsPrime (primesTo)
 import Lib.Isqrt (isqrtn)
 
@@ -30,16 +28,7 @@ target = 50000000
 -- BitArray ... 150 ms
 -- Bool STUArray ... 120 ms (likely binary packed)
 countUniq :: [Int] -> Int
-countUniq xs = runST $ do
-  ba <- newArray (0,target) False :: ST s (STUArray s Int Bool)
-  go ba xs 0
-    where go _ [] c = return c
-          go ba (x:xs') c = do
-            b <- unsafeRead ba x
-            if b
-              then go ba xs' c
-              else do unsafeWrite ba x True
-                      go ba xs' (c+1)
+countUniq = foldUniq (0,target) (\c _->c+1) 0
 
 prb87 :: IO Int
 prb87 = return (countUniq pps)
