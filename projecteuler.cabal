@@ -7,7 +7,7 @@ executable projecteuler
   main-is:             Main.hs
   other-modules:       Lib.Combinations, Lib.Digits, Lib.Divisors, Lib.FloodFill, Lib.IsPrime,
                        Lib.Isqrt, Lib.Permutations, Lib.Power, Lib.PowerMod, Lib.PythagoreanTriples,
-                       Lib.Uniq,
+                       Lib.Uniq, Lib.FoldUniq,
                        Problems,
                        Prb.Prb001, Prb.Prb002, Prb.Prb003, Prb.Prb004, Prb.Prb005, Prb.Prb006,
                        Prb.Prb007, Prb.Prb008, Prb.Prb009, Prb.Prb010, Prb.Prb011, Prb.Prb012,
