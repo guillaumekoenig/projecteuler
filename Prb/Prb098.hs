@@ -42,5 +42,5 @@ largestSquare xs = case (maximum $ map getSquare $ anagrams xs) of
 
 prb98 :: IO Int
 prb98 = readFile "data/p098_words.txt" >>= parse >>= go
-  where parse s = pure . read $ '[':s++"]"
+  where parse s = pure . read $ "["++s++"]"
         go = return . largestSquare

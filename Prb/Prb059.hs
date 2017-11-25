@@ -27,5 +27,5 @@ decryptedSum xs = sum $ zipWith xor xs (cycle key)
 
 prb59 :: IO Int
 prb59 = readFile "data/p059_cipher.txt" >>= parse >>= run
-  where parse s = pure . read $ '[':s++"]"
+  where parse s = pure . read $ "["++s++"]"
         run = pure . decryptedSum
