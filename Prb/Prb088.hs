@@ -1,5 +1,4 @@
 {-# LANGUAGE BangPatterns #-}
-{-# LANGUAGE FlexibleContexts #-}
 
 module Prb.Prb088 (prb88) where
 
@@ -18,9 +17,8 @@ products' start (p,s,c) !acc = foldl f acc [start..2*lim`div`p]
                    in products' x (p',s',c') acc''
 
 products :: [Int]
-products = elems $ foldl (accum min) a0 pps
-  where pps = map (\x->products' x (x,x,1) []) [2..isqrt lim]
-        a0 = listArray (2,lim) [2*lim,2*lim..] :: UArray Int Int
+products = elems (accumArray min (2*lim) (2,lim) kps :: UArray Int Int)
+  where kps = concatMap (\x->products' x (x,x,1) []) [2..isqrt lim]
 
 prb88 :: IO Int
 prb88 = return $ foldUniq (2,2*lim) (+) 0 $ products
