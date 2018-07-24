@@ -1,6 +1,6 @@
 module Prb.Prb098 (prb98) where
 
-import Lib.Isqrt
+import Lib.Isqrt (isSquare)
 import Data.Ord (comparing)
 
 anagrams :: [String] -> [[String]]
@@ -17,8 +17,10 @@ permute from to on = step2
 
 squaresLen :: Int -> [Int]
 squaresLen n = [r*r|r<-[start..end]]
-  where start = ceiling.(sqrt::Double->Double) $ 10^(n-1)
-        end = floor.(sqrt::Double->Double) $ 10^n-1
+  where start = ceiling . sqrt' $ 10^(n-1)
+        end = floor . sqrt' $ 10^n-1
+        sqrt' :: Int -> Double
+        sqrt' = sqrt . fromIntegral
 
 getSquare :: [String] -> Maybe Int
 getSquare [] = error "Unexpected empty list"

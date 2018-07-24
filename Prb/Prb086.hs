@@ -1,7 +1,5 @@
 module Prb.Prb086 (prb86) where
 
-import Prelude hiding ((^))
-import Lib.Power
 import Lib.Isqrt
 
 whichM :: Int -> Int -> Int -> Int

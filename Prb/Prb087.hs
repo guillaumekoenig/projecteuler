@@ -6,9 +6,6 @@ module Prb.Prb087 (prb87) where
 
 -- This was useful: https://wiki.haskell.org/Monad/ST
 
-import Prelude hiding ((^))
-import Lib.Power ((^))
-
 import Lib.FoldUniq (foldUniq)
 import Lib.IsPrime (primesTo)
 import Lib.Isqrt (isqrtn)

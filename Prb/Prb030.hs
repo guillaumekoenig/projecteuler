@@ -20,4 +20,4 @@ prb30 = return $ sum $ map value $ filter check xs
   where xs = concatMap (\k -> combinationsRep k [0..9]) [2..6]
         -- combinationsRep preserves order of elements
         check x = (sort . digits . value) x == x
-        value = sum . map (^(5::Int))
+        value = sum . map (^5)

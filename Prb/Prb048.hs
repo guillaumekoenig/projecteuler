@@ -1,7 +1,5 @@
 module Prb.Prb048 (prb48) where
 
-import Prelude hiding ((^))
-import Lib.Power
 import Lib.PowerMod
 
 prb48 :: IO Int

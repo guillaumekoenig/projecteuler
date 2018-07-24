@@ -4,6 +4,7 @@ module Prelude (
   , module GHC.Real
   , module GHC.Float
   , module Data.List
+  , (^)
   , show
   , fst
   , snd
@@ -15,7 +16,7 @@ module Prelude (
 
 import GHC.Base hiding (foldr, join, empty)
 import GHC.Num
-import GHC.Real
+import GHC.Real hiding ((^))
 import GHC.Float
 import GHC.Show (show)
 import Data.List
@@ -23,3 +24,7 @@ import Data.Tuple (fst, snd)
 import Text.Read (read)
 import System.IO (readFile, putStrLn)
 import Control.Monad (mapM_)
+
+import qualified GHC.Real as R ((^))
+(^) :: Integral a => a -> Int -> a
+(^) = (R.^)

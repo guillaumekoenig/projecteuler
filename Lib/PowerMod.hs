@@ -1,8 +1,5 @@
 module Lib.PowerMod where
 
-import Prelude hiding ((^))
-import Lib.Power
-
 powerMod :: Int -> Int -> Int -> Int
 powerMod _ 0 _ = 1
 powerMod n k m

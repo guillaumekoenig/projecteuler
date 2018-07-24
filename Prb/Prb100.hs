@@ -22,6 +22,6 @@ negativePell (x,y) = (x,y):negativePell (3*x+4*y,2*x+3*y)
 prb100 :: IO Int
 prb100 = return $ let (_,y) = head bigSolutions in b(y)
   where bigSolutions = dropWhile notBigEnough (negativePell (x0,y0))
-        notBigEnough (x,_) = t(x)<10^(12::Int)
+        notBigEnough (x,_) = t(x)<10^12
         (x0,y0) = (2*21-1,2*15-1)
         t x = (x+1)`div`2; b=t
