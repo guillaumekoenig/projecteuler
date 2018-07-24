@@ -1,5 +1,6 @@
 module Prb.Prb042 (prb42) where
 
+import GHC.Enum (fromEnum)
 import Lib.Isqrt (isqrt)
 
 parse :: String -> [Int]

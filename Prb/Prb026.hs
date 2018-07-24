@@ -11,9 +11,8 @@ module Prb.Prb026 (prb26) where
 --      10^k = 1 mod 7
 import Lib.IsPrime
 import Lib.PowerMod
-import Data.List
-import Data.Ord
-import Data.Maybe
+import Data.Ord (comparing)
+import Data.Maybe (fromJust)
 
 prb26 :: IO Int
 prb26 = return $ fst $ maximumBy (comparing snd) $ map cycLen primes

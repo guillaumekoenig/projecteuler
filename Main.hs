@@ -3,9 +3,8 @@
 module Main where
 
 import Data.Time.Clock
-import Data.Ord
-import Data.List
-import System.Environment
+import Data.Ord (comparing)
+import System.Environment (getArgs)
 
 import Problems
 

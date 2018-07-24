@@ -1,7 +1,5 @@
 module Prb.Prb065 (prb65) where
 
-import Data.Char
-
 convergentOfE :: Integer -> (Integer,Integer) -> (Integer,Integer)
 convergentOfE = go
   where go 0 (n,d) = add (2,1) (n,d)

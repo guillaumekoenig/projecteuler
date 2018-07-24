@@ -9,8 +9,7 @@ module Prb.Prb027 (prb27) where
 -- n+a<b, for the same reason
 -- so we also have a<b
 import Lib.IsPrime
-import Data.Ord
-import Data.List
+import Data.Ord (comparing)
 
 checkPair :: (Int,Int) -> Int
 checkPair (a,b) = length $ takeWhile isPrime test

@@ -1,8 +1,7 @@
 module Prb.Prb054 (prb54) where
 
-import Data.Ord
-import Data.List
-import Data.Maybe
+import Data.Ord (comparing)
+import Data.Maybe (fromJust)
 
 eq :: Eq b => (a -> b) -> a -> a -> Bool
 eq f a b = f a == f b

@@ -14,7 +14,7 @@ import Data.Array.ST
 
 type Matrix = UArray (Int,Int) Int
 
-readMatrix :: FilePath -> IO Matrix
+readMatrix :: String -> IO Matrix
 readMatrix file = do
   contents <- readFile file
   let matrix = map (\line->read ("["++line++"]")) $ lines contents

@@ -1,8 +1,7 @@
 module Prb.Prb098 (prb98) where
 
 import Lib.Isqrt
-import Data.Ord
-import Data.List
+import Data.Ord (comparing)
 
 anagrams :: [String] -> [[String]]
 anagrams = filter ((>1).length) . group' . sort'
