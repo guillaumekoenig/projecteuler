@@ -1,5 +1,3 @@
-{-# LANGUAGE BangPatterns #-}
-
 module Prb.Prb088 (prb88) where
 
 import Lib.Isqrt

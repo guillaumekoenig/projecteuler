@@ -1,5 +1,3 @@
-{-# LANGUAGE FlexibleContexts #-}
-
 module Lib.IsPrime (isPrime, primeFactors, primeFactors2, primesTo) where
 
 import Lib.Isqrt (isqrt)

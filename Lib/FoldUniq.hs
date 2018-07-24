@@ -1,5 +1,3 @@
-{-# LANGUAGE FlexibleContexts #-}
-
 module Lib.FoldUniq (foldUniq) where
 
 import Control.Monad

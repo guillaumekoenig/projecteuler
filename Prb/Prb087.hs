@@ -1,5 +1,3 @@
-{-# LANGUAGE FlexibleContexts #-} -- Huh ?
-
 module Prb.Prb087 (prb87) where
 
 -- You can get out of monad via runST for the ST
