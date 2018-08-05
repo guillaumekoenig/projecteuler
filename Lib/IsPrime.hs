@@ -35,22 +35,22 @@ primeFactors = map fst . primeFactors2
 -- starting at 0, not the lower bound index defined when
 -- creating the array.
 primesTo :: Int -> [Int]
-primesTo n = map fst . filter (not . snd) . assocs $ runSTUArray $ do
-  arr <- newArray (0,n) False -- Slightly faster than with True (?)
-  unsafeWrite arr 0 True
-  unsafeWrite arr 1 True
+primesTo n = map fst . filter snd . assocs $ runSTUArray $ do
+  arr <- newArray (0,n) True
+  unsafeWrite arr 0 False
+  unsafeWrite arr 1 False
   go arr 2
   return arr
     where go a i
             | i > isqrt n = return ()
             | otherwise = do
-                notprime <- unsafeRead a i
-                if not notprime
+                prime <- unsafeRead a i
+                if prime
                   then mark a (i+i) i
                   else return ()
                 go a (i+1)
           mark a i s
             | i > n = return ()
             | otherwise = do
-                unsafeWrite a i True
+                unsafeWrite a i False
                 mark a (i+s) s
