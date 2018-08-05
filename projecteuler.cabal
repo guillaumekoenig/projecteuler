@@ -20,9 +20,9 @@ executable projecteuler
                        Prb.Prb043, Prb.Prb044, Prb.Prb045, Prb.Prb046, Prb.Prb047, Prb.Prb048,
                        Prb.Prb049, Prb.Prb050, Prb.Prb051, Prb.Prb052, Prb.Prb053, Prb.Prb054,
                        Prb.Prb055, Prb.Prb056, Prb.Prb057, Prb.Prb058, Prb.Prb059, Prb.Prb060,
-                       Prb.Prb061, Prb.Prb065, Prb.Prb067, Prb.Prb075, Prb.Prb081, Prb.Prb082,
-                       Prb.Prb083, Prb.Prb085, Prb.Prb086, Prb.Prb087, Prb.Prb088, Prb.Prb090,
-                       Prb.Prb097, Prb.Prb098, Prb.Prb099, Prb.Prb100
+                       Prb.Prb061, Prb.Prb062, Prb.Prb065, Prb.Prb067, Prb.Prb075, Prb.Prb081,
+                       Prb.Prb082, Prb.Prb083, Prb.Prb085, Prb.Prb086, Prb.Prb087, Prb.Prb088,
+                       Prb.Prb090, Prb.Prb097, Prb.Prb098, Prb.Prb099, Prb.Prb100
   default-extensions:  FlexibleContexts
                        BangPatterns
   build-depends:       base-noprelude, array, memoize, time
