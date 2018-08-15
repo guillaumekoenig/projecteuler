@@ -13,13 +13,38 @@ import Data.Bits
 -- 20180814: accumulating length in a function argument slices time by
 -- almost 2, compared to updating on function return.  In the latter
 -- case, forcing evaluation shows no improvement (i can't explain it).
+-- More testing with memoize shows it incurs a pretty large overhead
+-- compared to 'dict' in other languages.  Using raw contiguous memory
+-- (ie STUArray) again outperforms other approaches.
 
-collatz :: Int -> Int -> Int
-collatz n l
-  | n == 1 = l
-  | n.&.1 == 0 = collatz (shiftR n 1) (l+1)
-  | otherwise = collatz (shiftR (shiftL n 1+n+1) 1) (l+2)
+import Control.Monad.ST (runST, ST)
+import Data.Array.Base (newArray, unsafeRead, unsafeWrite)
+import Data.Array.ST (STUArray)
+import Data.Int (Int32)
+
+collatz :: Int -> Int
+collatz n = runST $ do
+  arr <- newArray (1,n) 0 :: ST s (STUArray s Int Int32)
+  unsafeWrite arr 1 1
+  let collatz' k
+        | k <= n = do
+            x <- unsafeRead arr k
+            case x of
+              0 -> do x' <- if k.&.1 == 0 then liftM (+1) $ collatz' (shiftR k 1)
+                            else liftM (+2) $ collatz' (shiftR (shiftL k 1+k+1) 1)
+                      unsafeWrite arr k x'
+                      pure x'
+              _ -> pure x
+        | k.&.1 == 0 = liftM (+1) $ collatz' (shiftR k 1)
+        | otherwise = liftM (+2) $ collatz' (shiftR (shiftL k 1+k+1) 1)
+      -- mapM is cool except... it's slow (?!)
+      go k max_ at
+        | k == n+1 = pure at
+        | otherwise = do
+            x <- collatz' k
+            if x > max_ then go (k+1) x k
+              else go (k+1) max_ at
+  go 1 0 0
 
 prb14 :: IO Int
-prb14 = return $ maxIndex $ map (\x -> collatz x 1) [1..1000000]
-  where maxIndex xs = snd $ maximum $ zip xs [1..]
+prb14 = return $ collatz (10^6)
