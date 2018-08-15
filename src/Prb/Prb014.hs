@@ -22,29 +22,33 @@ import Data.Array.Base (newArray, unsafeRead, unsafeWrite)
 import Data.Array.ST (STUArray)
 import Data.Int (Int32)
 
-collatz :: Int -> Int
-collatz n = runST $ do
+--collatz :: (Monad m, Integral a) => (Int -> m a) -> Int -> m a
+collatz :: (Int -> ST s Int32) -> Int -> ST s Int32
+collatz f k
+  | k.&.1 == 0 = liftM (+1) $ f (shiftR k 1)
+  | otherwise = liftM (+2) $ f (shiftR (shiftL k 1+k+1) 1)
+
+go :: Int -> Int
+go n = runST $ do
   arr <- newArray (1,n) 0 :: ST s (STUArray s Int Int32)
   unsafeWrite arr 1 1
-  let collatz' k
+  let memo k
         | k <= n = do
             x <- unsafeRead arr k
             case x of
-              0 -> do x' <- if k.&.1 == 0 then liftM (+1) $ collatz' (shiftR k 1)
-                            else liftM (+2) $ collatz' (shiftR (shiftL k 1+k+1) 1)
+              0 -> do x' <- collatz memo k
                       unsafeWrite arr k x'
                       pure x'
               _ -> pure x
-        | k.&.1 == 0 = liftM (+1) $ collatz' (shiftR k 1)
-        | otherwise = liftM (+2) $ collatz' (shiftR (shiftL k 1+k+1) 1)
+        | otherwise = collatz memo k
       -- mapM is cool except... it's slow (?!)
-      go k max_ at
+      findMax k max_ at
         | k == n+1 = pure at
         | otherwise = do
-            x <- collatz' k
-            if x > max_ then go (k+1) x k
-              else go (k+1) max_ at
-  go 1 0 0
+            x <- memo k
+            if x > max_ then findMax (k+1) x k
+              else findMax (k+1) max_ at
+  findMax 1 0 0
 
 prb14 :: IO Int
-prb14 = return $ collatz (10^6)
+prb14 = return $ go (10^6)
