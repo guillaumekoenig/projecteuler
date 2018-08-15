@@ -25,6 +25,7 @@ import Control.Monad (foldM)
 
 --collatz :: (Monad m, Integral a) => (Int -> m a) -> Int -> m a
 collatz :: (Int -> ST s Int32) -> Int -> ST s Int32
+collatz _ 1 = pure 1
 collatz f k
   | k.&.1 == 0 = liftM (+1) $ f (shiftR k 1)
   | otherwise = liftM (+2) $ f (shiftR (shiftL k 1+k+1) 1)
@@ -32,27 +33,27 @@ collatz f k
 -- foldM is way faster than the equivalent with mapM, namely:
 --   liftM (snd . maximum . flip zip [1..]) . mapM f
 -- Maybe for some reason mapM must produce the entire list in memory ?
-maxApplying :: (Int -> ST s Int32) -> [Int] -> ST s Int
-maxApplying f = liftM snd . foldM keepMax (0,0)
+maxApplyingOn :: [Int] -> (Int -> ST s Int32) -> ST s Int
+maxApplyingOn xs f = liftM snd . foldM keepMax (0,0) $ xs
   where keepMax (!max_,at) k = do
           x <- f k
           pure $ if x>max_ then (x,k)
             else (max_,at)
 
-go :: Int -> Int
-go n = runST $ do
-  arr <- newArray (1,n) 0 :: ST s (STUArray s Int Int32)
-  unsafeWrite arr 1 1
+-- Note: using 0 as uninitialized value
+memoize :: (Int,Int) -> ((Int -> ST s Int32) -> Int -> ST s Int32) -> ((Int -> ST s Int32) -> ST s Int) -> ST s Int
+memoize (lo,hi) f computation = do
+  arr <- newArray (lo,hi) 0 :: ST s (STUArray s Int Int32)
   let memo k
-        | k <= n = do
+        | lo <= k && k <= hi = do
             x <- unsafeRead arr k
             case x of
-              0 -> do x' <- collatz memo k
+              0 -> do x' <- f memo k
                       unsafeWrite arr k x'
                       pure x'
               _ -> pure x
-        | otherwise = collatz memo k
-  maxApplying memo [1..n]
+        | otherwise = f memo k
+  computation memo
 
 prb14 :: IO Int
-prb14 = return $ go (10^6)
+prb14 = return $ runST $ memoize (1,10^6) collatz (maxApplyingOn [1..10^6])
