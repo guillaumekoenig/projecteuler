@@ -21,6 +21,7 @@ import Control.Monad.ST (runST, ST)
 import Data.Array.Base (newArray, unsafeRead, unsafeWrite)
 import Data.Array.ST (STUArray)
 import Data.Int (Int32)
+import Control.Monad (foldM)
 
 --collatz :: (Monad m, Integral a) => (Int -> m a) -> Int -> m a
 collatz :: (Int -> ST s Int32) -> Int -> ST s Int32
@@ -41,14 +42,7 @@ go n = runST $ do
                       pure x'
               _ -> pure x
         | otherwise = collatz memo k
-      -- mapM is cool except... it's slow (?!)
-      findMax k max_ at
-        | k == n+1 = pure at
-        | otherwise = do
-            x <- memo k
-            if x > max_ then findMax (k+1) x k
-              else findMax (k+1) max_ at
-  findMax 1 0 0
+  liftM snd $ foldM (\(!max_,at) k->do {x<-memo k;pure $ if x>max_ then (x,k) else (max_,at)}) (0,0) [1..n]
 
 prb14 :: IO Int
 prb14 = return $ go (10^6)
