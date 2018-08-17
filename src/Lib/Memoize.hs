@@ -7,9 +7,6 @@ import Data.Array.ST (STUArray)
 -- When you have so many parameters, maybe that's when to...  define a
 -- type, with fields
 
--- Taking this code out yields worse performance for #14, which is
--- disappointing.  Some optimizations can no longer be applied ?
-
 -- Note: using 0 as uninitialized value
 memoize :: (Int,Int) -> ((Int -> ST s Int) -> Int -> ST s Int) -> ((Int -> ST s Int) -> ST s Int) -> ST s Int
 memoize (lo,hi) f computation = do
@@ -24,3 +21,7 @@ memoize (lo,hi) f computation = do
               _ -> pure x
         | otherwise = f memo k
   computation memo
+
+-- Makes a real difference, allows cross module optimizations
+-- especially with polymorphic types... ST s ?
+{-# INLINE memoize #-}
