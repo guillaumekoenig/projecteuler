@@ -8,7 +8,7 @@ import Data.Array.ST (STUArray)
 -- type, with fields
 
 -- Note: using 0 as uninitialized value
-memoize :: (Int,Int) -> ((Int -> ST s Int) -> Int -> ST s Int) -> ((Int -> ST s Int) -> ST s Int) -> ST s Int
+memoize :: (Int,Int) -> ((Int -> ST s Int) -> Int -> ST s Int) -> ((Int -> ST s Int) -> ST s a) -> ST s a
 memoize (lo,hi) f computation = do
   arr <- newArray (lo,hi) 0 :: ST s (STUArray s Int Int)
   let memo k
