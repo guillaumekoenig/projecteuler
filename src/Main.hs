@@ -19,7 +19,7 @@ prbs = [prb1, prb2, prb3, prb4, prb5, prb6, prb7, prb8, prb9, prb10,
   prb61, prb62, prb63, prb64, prb65, empty, prb67, empty, empty, empty,
   empty, empty, empty, empty, prb75, empty, empty, empty, prb79, prb80,
   prb81, prb82, prb83, empty, prb85, prb86, prb87, prb88, empty, prb90,
-  empty, empty, empty, empty, empty, empty, prb97, prb98, prb99, prb100]
+  empty, prb92, empty, empty, empty, empty, prb97, prb98, prb99, prb100]
 
 runAll :: [IO Int] -> IO [(Int,NominalDiffTime)]
 runAll [] = return []
