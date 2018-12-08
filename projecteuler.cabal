@@ -6,7 +6,7 @@ cabal-version:       >=1.10
 executable projecteuler
   main-is:             Main.hs
   other-modules:       Prelude,
-                       Lib.Combinations, Lib.Digits, Lib.Divisors, Lib.FloodFill, Lib.IsPrime,
+                       Lib.BellmanFord, Lib.Combinations, Lib.Digits, Lib.Divisors, Lib.IsPrime,
                        Lib.Isqrt, Lib.Permutations, Lib.PowerMod, Lib.PythagoreanTriples,
                        Lib.FoldUniq, Lib.Memoize,
                        Problems,

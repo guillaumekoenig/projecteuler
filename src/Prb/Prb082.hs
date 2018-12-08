@@ -1,6 +1,6 @@
 module Prb.Prb082 (prb82) where
 
-import Lib.FloodFill (readMatrix, floodFill, bounds, (!))
+import Lib.BellmanFord (readMatrix, bellmanFord, bounds, (!))
 
 prb82 :: IO Int
 prb82 = do
@@ -8,5 +8,5 @@ prb82 = do
   let ((xmin,ymin),(xmax,ymax)) = bounds input
       startingPoints = [(x,ymin)|x<-[xmin..xmax]]
       directions (x,y) = [(x-1,y),(x+1,y),(x,y+1)]
-      finalArray = floodFill input startingPoints directions
+      finalArray = bellmanFord input startingPoints directions
   return $ minimum $ map (\x->finalArray!(x,ymax)) [xmin..xmax]
