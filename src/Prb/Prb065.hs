@@ -1,5 +1,6 @@
 module Prb.Prb065 (prb65) where
 
+import Data.Char (ord)
 import Lib.ContinuedFraction (convergents)
 
 eExpansion :: [Integer]

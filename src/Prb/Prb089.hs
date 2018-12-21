@@ -3,6 +3,7 @@ module Prb.Prb089 (prb89) where
 import GHC.Show (Show)
 import Text.Read (Read, readsPrec)
 import Data.Maybe (fromJust)
+import Data.List (foldl')
 
 data Numeral = Numeral Int
 

@@ -2,6 +2,7 @@ module Main where
 
 import Data.Time.Clock
 import Data.Ord (comparing)
+import Data.List (sortBy)
 import System.Environment (getArgs)
 
 import Problems

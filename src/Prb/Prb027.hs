@@ -10,6 +10,7 @@ module Prb.Prb027 (prb27) where
 -- so we also have a<b
 import Lib.IsPrime
 import Data.Ord (comparing)
+import Data.List (maximumBy)
 
 checkPair :: (Int,Int) -> Int
 checkPair (a,b) = length $ takeWhile isPrime test

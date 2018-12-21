@@ -103,11 +103,10 @@ executable projecteuler
                        Prb.Prb098,
                        Prb.Prb099,
                        Prb.Prb100,
-                       Prelude,
                        Problems
   default-extensions:  FlexibleContexts
                        BangPatterns
-  build-depends:       base-noprelude, array, time
+  build-depends:       base, array, time
   hs-source-dirs:      src
   default-language:    Haskell2010
-  ghc-options:         -Wall -O2
+  ghc-options:         -O2 -Wall -Wno-type-defaults

@@ -3,6 +3,7 @@ module Prb.Prb066 (prb66) where
 import Lib.ContinuedFraction (sqrtExpansion, convergents)
 import Lib.Isqrt (isqrt)
 import Data.Maybe (fromJust)
+import Data.List (find)
 
 -- Pell's equation fundamental solution
 -- https://en.wikipedia.org/wiki/Pell%27s_equation#Fundamental_solution_via_continued_fractions

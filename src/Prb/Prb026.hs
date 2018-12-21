@@ -13,6 +13,7 @@ import Lib.IsPrime
 import Lib.PowerMod
 import Data.Ord (comparing)
 import Data.Maybe (fromJust)
+import Data.List (find, maximumBy)
 
 prb26 :: IO Int
 prb26 = return $ fst $ maximumBy (comparing snd) $ map cycLen primes

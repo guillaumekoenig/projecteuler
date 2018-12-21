@@ -1,5 +1,6 @@
 module Prb.Prb015 (prb15) where
 
+import Control.Monad (liftM2)
 import Control.Monad.ST (runST, ST)
 import Data.Bits
 

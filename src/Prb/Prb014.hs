@@ -18,7 +18,7 @@ import Data.Bits
 -- (ie STUArray) again outperforms other approaches.
 
 import Control.Monad.ST (runST, ST)
-import Control.Monad (foldM)
+import Control.Monad (foldM, liftM)
 
 import Lib.Memoize (memoize)
 

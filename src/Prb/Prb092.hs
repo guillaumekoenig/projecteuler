@@ -2,6 +2,7 @@ module Prb.Prb092 (prb92) where
 
 import Control.Monad.ST (ST, runST)
 import Control.Monad (foldM)
+import Data.List (group, foldl')
 
 import Lib.Memoize (memoize)
 import Lib.Digits (digits, undigits)

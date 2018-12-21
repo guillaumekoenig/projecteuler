@@ -2,6 +2,7 @@ module Prb.Prb098 (prb98) where
 
 import Lib.Isqrt (isSquare)
 import Data.Ord (comparing)
+import Data.List
 
 anagrams :: [String] -> [[String]]
 anagrams = filter ((>1).length) . group' . sort'

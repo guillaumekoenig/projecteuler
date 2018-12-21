@@ -1,6 +1,7 @@
 module Prb.Prb032 (prb32) where
 
 import Data.Bits
+import Data.List (nub)
 import Lib.Combinations
 import Lib.Permutations
 import Lib.Digits

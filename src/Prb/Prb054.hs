@@ -2,6 +2,7 @@ module Prb.Prb054 (prb54) where
 
 import Data.Ord (comparing)
 import Data.Maybe (fromJust)
+import Data.List
 
 eq :: Eq b => (a -> b) -> a -> a -> Bool
 eq f a b = f a == f b

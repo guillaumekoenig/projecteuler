@@ -3,6 +3,7 @@ module Prb.Prb064 (prb64) where
 import Lib.ContinuedFraction (sqrtExpansion)
 import Lib.Isqrt (isqrt)
 import Data.Maybe (fromJust)
+import Data.List (findIndex)
 
 -- That leaves the problem of identifying the cycle length.  A result
 -- that can be observed in the examples of the statement is that the
