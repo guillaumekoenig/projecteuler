@@ -1,6 +1,6 @@
 module Prb.Prb023 (prb23) where
 
-import Lib.Divisors (divisors)
+import Lib.IsPrime (divisors)
 import Data.Array.ST
 import Control.Monad.ST
 import Data.List (tails)
@@ -17,5 +17,5 @@ sumOfAbundants as lim = runST $ do
 prb23 :: IO Int
 prb23 = return $ foldr f 0 $ zip [1..] (sumOfAbundants as lim)
   where f (x,isSum) acc = acc + if not isSum then x else 0
-        as = filter (\x -> sum (1 : divisors x) > x) [12..lim]
+        as = filter (\x -> sum (divisors x) > x) [12..lim]
         lim = 28123

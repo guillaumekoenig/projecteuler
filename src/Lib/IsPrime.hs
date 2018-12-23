@@ -1,4 +1,4 @@
-module Lib.IsPrime (isPrime, primeFactors, primeFactors2, primesTo) where
+module Lib.IsPrime (isPrime, primeFactors, primeFactors2, primesTo, divisors) where
 
 import Lib.Isqrt (isqrt)
 
@@ -54,3 +54,12 @@ primesTo n = map fst . filter snd . assocs $ runSTUArray $ do
             | otherwise = do
                 unsafeWrite a i False
                 mark a (i+s) s
+
+-- Divisors of n, excluding n
+divisors :: Int -> [Int]
+divisors n = drop 1 $ divisors' sig
+  where sig = primeFactors2 n
+
+divisors' :: [(Int,Int)] -> [Int]
+divisors' [] = [1]
+divisors' ((p,k):ps) = [p^k'*d | d<-divisors' ps, k'<-[k,k-1..0]]

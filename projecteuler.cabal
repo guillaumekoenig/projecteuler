@@ -9,7 +9,6 @@ executable projecteuler
                        Lib.Combinations,
                        Lib.ContinuedFraction,
                        Lib.Digits,
-                       Lib.Divisors,
                        Lib.FoldUniq,
                        Lib.IsPrime,
                        Lib.Isqrt,
