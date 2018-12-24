@@ -1,7 +1,11 @@
-name:                projecteuler
-version:             0.1
-build-type:          Simple
-cabal-version:       >=1.10
+-- To build with profiling :
+--   cabal configure --enable-profiling --profiling-detail=all-functions
+--   cabal run -- +RTS -p -RTS
+
+name: projecteuler
+version: 0.1
+build-type: Simple
+cabal-version: >=1.10
 
 executable projecteuler
   main-is:             Main.hs
