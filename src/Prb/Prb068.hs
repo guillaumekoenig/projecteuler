@@ -1,24 +1,28 @@
 module Prb.Prb068 where
 
 import Data.List ((\\))
-import Lib.Combinations (combinations)
-import Lib.Permutations (perms)
 
 nngon :: Int
 nngon = 5
+
+-- Permutations of combinations, in increasing order
+combPerms :: Int -> [Int] -> [Int] -> [[Int]]
+combPerms 0 _ acc = [reverse acc]
+combPerms n xs acc = concat [combPerms (n-1) xs (x:acc) | x <- xs \\ acc]
 
 -- First arm candidates, in decreasing order so we stop once one
 -- solution (the maximum) is found. The first element is the smallest
 -- of all other arms, which we account for with the max_ variable.
 firstArms :: [[Int]]
-firstArms = [p | c<-combinations 3 [max_,max_-1..1], p<-perms c]
+firstArms = [p | p<-combPerms 3 [nmax,nmax-1..1] [], p!!0 <= max_]
   where nmax = 2*nngon; max_ = nmax-(nngon-1)
 
 -- Complete the Ngon, given a first arm, to first solution found,
 -- traversing space in descreasing order to stop at the biggest.
 completeNGon :: Int -> [Int] -> [Int] -> [[Int]]
 completeNGon 1 ngon [h]
-  | h+middle+end == sum (take 3 ngon) = [ngon ++ (h:middle:end:[])]
+  | h>head ngon && h+middle+end==sum (take 3 ngon) =
+      [ngon ++ (h:middle:end:[])]
   | otherwise = []
   where middle = last ngon; end = ngon !! 1
 completeNGon nleft ngon pool = go headCandidates
