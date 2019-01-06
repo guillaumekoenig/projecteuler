@@ -67,6 +67,7 @@ module Problems (
   module Prb.Prb066,
   module Prb.Prb067,
   module Prb.Prb068,
+  module Prb.Prb069,
   module Prb.Prb070,
   module Prb.Prb075,
   module Prb.Prb076,
@@ -157,6 +158,7 @@ import Prb.Prb065
 import Prb.Prb066
 import Prb.Prb067
 import Prb.Prb068
+import Prb.Prb069
 import Prb.Prb070
 import Prb.Prb075
 import Prb.Prb076

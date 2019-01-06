@@ -89,6 +89,7 @@ executable projecteuler
                        Prb.Prb066,
                        Prb.Prb067,
                        Prb.Prb068,
+                       Prb.Prb069,
                        Prb.Prb070,
                        Prb.Prb075,
                        Prb.Prb076,
