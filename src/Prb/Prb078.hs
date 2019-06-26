@@ -27,17 +27,18 @@ import Lib.Memoize (memoize)
 p :: (Int -> ST s Int) -> Int -> ST s Int
 p _ 0 = pure 1
 p _ 1 = pure 1
-p p' n = go 1
-  where go k | pent1 k > n = pure 0
-             | pent2 k > n = liftM (sign k) $ p' (n-pent1 k)
-             | otherwise = do
-                 acc <- go (k+1)
-                 p1 <- p' (n-pent1 k)
-                 p2 <- p' (n-pent2 k)
-                 pure $ (`mod` (10^6)) $ acc + sign k (p1 + p2)
+p p' n = go 1 0
+  where go k !acc
+          | pent1 k > n = pure acc
+          | pent2 k > n = liftM ((acc+) . sign k) $ p' (n-pent1 k)
+          | otherwise = do
+              p1 <- p' (n-pent1 k)
+              p2 <- p' (n-pent2 k)
+              go (k+1) $ (`mod` (10^6)) $ acc + sign k (p1 + p2)
         sign k m = if odd k then m else -m
         pent1 k = k*(3*k-1) `div` 2
         pent2 k = k*(3*k+1) `div` 2
+{-# INLINE p #-}
 
 -- Note: Memoizing up to 10^6, if further values are required they
 -- will be computed but not memoized
