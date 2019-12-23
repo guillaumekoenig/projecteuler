@@ -13,7 +13,7 @@ candidate n count mask acc
 family :: Int -> Int -> Int
 family x mask = length $ filter (==True) [check i|i<-[0..9]]
   where base = x - 1*mask
-        check 0 = (length $ show x) == (length $ show base)
+        check 0 = length (show x) == length (show base)
         check i = isPrime (base+i*mask)
 
 prb51 :: IO Int

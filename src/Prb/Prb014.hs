@@ -18,7 +18,7 @@ import Data.Bits
 -- (ie STUArray) again outperforms other approaches.
 
 import Control.Monad.ST (runST, ST)
-import Control.Monad (foldM, liftM)
+import Control.Monad (foldM)
 
 import Lib.Memoize (memoize)
 
@@ -26,16 +26,15 @@ import Lib.Memoize (memoize)
 collatz :: (Int -> ST s Int) -> Int -> ST s Int
 collatz _ 1 = pure 1
 collatz f k
-  | k.&.1 == 0 = liftM (+1) $ f (shiftR k 1)
-  | otherwise = liftM (+2) $ f (shiftR (shiftL k 1+k+1) 1)
+  | k.&.1 == 0 = (+1) <$> f (shiftR k 1)
+  | otherwise = (+2) <$> f (shiftR (shiftL k 1+k+1) 1)
 
 -- foldM is way faster than the equivalent with mapM, namely:
 --   liftM (snd . maximum . flip zip [1..]) . mapM f
 -- Maybe for some reason mapM must produce the entire list in memory ?
 maxApplying :: (Int -> ST s Int) -> [Int] -> ST s Int
-maxApplying f = liftM snd . foldM apply (0,0)
-  where apply (!max_,at) k = f k >>= \x -> pure $
-          if x>max_ then (x,k) else (max_,at)
+maxApplying f = fmap snd . foldM apply (0,0)
+  where apply (!max_,at) k = (\x -> if x>max_ then (x,k) else (max_,at)) <$> f k
 
 prb14 :: IO Int
 prb14 = return $ runST $ memoize (1,10^6) collatz $

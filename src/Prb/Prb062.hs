@@ -12,7 +12,7 @@ accumDigits :: [Int] -> Int
 accumDigits = foldl (\a d->putcount a d $ getcount a d + 1) 0
   where getcount a d = shiftR a (d*5) .&. 0x1f
         putcount a d v = shiftL v (d*5) .|. a'
-          where a' = a .&. (complement $ shiftL 0x1f (d*5))
+          where a' = a .&. complement (shiftL 0x1f (d*5))
 
 normalize :: Int -> Int
 normalize =  accumDigits . digits
@@ -42,7 +42,7 @@ findFive xs = runST $ do
             do let bucket' = (x',x:ys) : [(a,b)|(a,b)<-bucket,a/=x']
                unsafeWrite arr h bucket'
                if length (x:ys) == 5
-                 then pure $ (last ys)^3
+                 then pure $ last ys^3
                  else go xs'
           Nothing ->
             do unsafeWrite arr h ((x',[x]) : bucket)

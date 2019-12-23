@@ -3,7 +3,7 @@ module Prb.Prb064 (prb64) where
 import Lib.ContinuedFraction (sqrtExpansion)
 import Lib.Isqrt (isqrt)
 import Data.Maybe (fromJust)
-import Data.List (findIndex)
+import Data.List (elemIndex)
 
 -- That leaves the problem of identifying the cycle length.  A result
 -- that can be observed in the examples of the statement is that the
@@ -12,7 +12,7 @@ import Data.List (findIndex)
 lengthPeriod :: Int -> Int
 lengthPeriod n
   | a0^2 == n = 0               -- perfect square
-  | otherwise = fromJust $ findIndex (== 2*a0) (sqrtExpansion n a0)
+  | otherwise = fromJust $ elemIndex (2*a0) (sqrtExpansion n a0)
   where a0 = isqrt n
 
 prb64 :: IO Int

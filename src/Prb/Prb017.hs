@@ -13,10 +13,10 @@ prb17 :: IO Int
 prb17 = return $ sum $ map count [1..1000]
   where count x
           | x < 20 = length $ deci !! x
-          | x < 100 = (length $ deca !! (x`div`10))
-                      + (length $ deci !! (x`mod`10))
-          | x < 1000 = (length $ deci !! (x`div`100))
+          | x < 100 = length (deca !! (x`div`10))
+                      + length (deci !! (x`mod`10))
+          | x < 1000 = length (deci !! (x`div`100))
                        + length "hundred"
                        + (if x`mod`100 /= 0 then length "and" else 0)
-                       + (count $ x`mod`100)
+                       + count (x`mod`100)
           | otherwise = length $ "one" ++ "thousand"

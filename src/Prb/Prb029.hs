@@ -11,10 +11,10 @@ import Data.List (sort)
 primeSig :: Int -> [(Int,Int)]
 primeSig x = extractPowers x (2:[3,5..isqrt x])
   where extractPowers n ps
-          | null ps = if n /= 1 then [(n,1)] else []
+          | null ps = [(n,1) | n/=1]
           | otherwise = let (n',k) = extractPower n (head ps)
                         in if k /= 0 then
-                             ((head ps),k) : extractPowers n' (tail ps)
+                             (head ps,k) : extractPowers n' (tail ps)
                            else
                              extractPowers n (tail ps)
         extractPower n p

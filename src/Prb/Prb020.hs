@@ -6,4 +6,4 @@ fact100 :: Integer
 fact100 = product [1..100]
 
 prb20 :: IO Int
-prb20 = return $ sum $ map digitToInt $ show $ fact100
+prb20 = return $ sum $ map digitToInt $ show fact100

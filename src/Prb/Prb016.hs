@@ -6,4 +6,4 @@ bigNum :: Integer
 bigNum = 2^1000
 
 prb16 :: IO Int
-prb16 = return $ foldl1 (+) $ map digitToInt $ show $ bigNum
+prb16 = return $ sum $ map digitToInt $ show bigNum

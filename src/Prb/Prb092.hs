@@ -28,8 +28,8 @@ countperms ds = foldl' div (fact (length ds)) (reps ds)
 
 compute :: (Int -> ST s Int) -> ST s Int
 compute arrival' = foldM count 0 $ combinationsRep 7 [0..9]
-  where count !a ds = (arrival' . undigits) ds >>=
-          \x -> pure $ if x==89 then a+countperms ds else a
+  where count !a ds = (\x -> if x==89 then a+countperms ds else a)
+          <$> (arrival' . undigits) ds
 
 prb92 :: IO Int
 prb92 = return $ runST $ memoize (0,7*9^2) arrival compute

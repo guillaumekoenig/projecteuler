@@ -28,7 +28,7 @@ prb75 = return . length . filter (==1) . elems $ runSTUArray $ do
     where pmax = 1500000
           perimeter (a,b,c) = a+b+c
           mark arr p = go arr p p
-          go arr p pm = do
+          go arr p pm =
             if pm <= pmax
               then do c <- unsafeRead arr pm
                       unsafeWrite arr pm (min (c+1) 2)

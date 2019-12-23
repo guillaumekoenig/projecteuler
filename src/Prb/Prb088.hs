@@ -19,4 +19,4 @@ products = elems (accumArray min (2*lim) (2,lim) kps :: UArray Int Int)
   where kps = concatMap (\x->products' x (x,x,1) []) [2..isqrt lim]
 
 prb88 :: IO Int
-prb88 = return $ foldUniq (2,2*lim) (+) 0 $ products
+prb88 = return $ foldUniq (2,2*lim) (+) 0 products

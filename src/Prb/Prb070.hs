@@ -45,7 +45,7 @@ module Prb.Prb070 where
 import Lib.IsPerm (isPerm)
 import Lib.IsPrime (isPrime)
 import Lib.Isqrt (isqrt)
-import Data.List (sortBy)
+import Data.List (minimumBy)
 
 nextPrime :: Int -> Int
 nextPrime n = head . filter isPrime $ [n+1,n+2..]
@@ -68,9 +68,9 @@ possiblyBetterSols origSol@(x0,y0) x y acc
   where phin0 = (x0-1)*(y0-1); n0 = x0*y0
 
 prb70 :: IO Int
-prb70 = return $ fst $ head $ sortBy lowestRatio $ map phi xs
+prb70 = return $ fst $ minimumBy lowestRatio $ map phi xs
   where i = prevPrime $ isqrt (10^7)
         (x0,y0) = findASol i i
-        xs = (possiblyBetterSols (x0,y0) x0 y0 [])
+        xs = possiblyBetterSols (x0,y0) x0 y0 []
         lowestRatio (x,y) (x1,y1) = compare (x*y1) (y*x1)
         phi (x,y) = (x*y,(x-1)*(y-1))

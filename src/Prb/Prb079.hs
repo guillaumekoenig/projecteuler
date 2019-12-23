@@ -4,7 +4,6 @@ import Lib.Digits (undigits)
 
 import Data.Bits
 import Data.Array (Array, (!), accumArray)
-import Data.Either (Either(..))
 import Data.Char (ord)
 
 -- Assume the passcode has only distinct digits; from input, express

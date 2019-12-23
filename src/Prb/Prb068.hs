@@ -14,7 +14,7 @@ combPerms n xs acc = concat [combPerms (n-1) xs (x:acc) | x <- xs \\ acc]
 -- solution (the maximum) is found. The first element is the smallest
 -- of all other arms, which we account for with the max_ variable.
 firstArms :: [[Int]]
-firstArms = [p | p<-combPerms 3 [nmax,nmax-1..1] [], p!!0 <= max_]
+firstArms = [p | p<-combPerms 3 [nmax,nmax-1..1] [], head p <= max_]
   where nmax = 2*nngon; max_ = nmax-(nngon-1)
 
 -- Complete the Ngon, given a first arm, to first solution found,
@@ -22,7 +22,7 @@ firstArms = [p | p<-combPerms 3 [nmax,nmax-1..1] [], p!!0 <= max_]
 completeNGon :: Int -> [Int] -> [Int] -> [[Int]]
 completeNGon 1 ngon [h]
   | h>head ngon && h+middle+end==sum (take 3 ngon) =
-      [ngon ++ (h:middle:end:[])]
+      [ngon ++ [h,middle,end]]
   | otherwise = []
   where middle = last ngon; end = ngon !! 1
 completeNGon nleft ngon pool = go headCandidates
@@ -35,11 +35,11 @@ completeNGon nleft ngon pool = go headCandidates
           where ngon' = ngon ++ arm
                 middle = last ngon
                 end = sum (take 3 ngon) - h - middle
-                arm = h : middle : end : []
+                arm = [h,middle,end]
                 pool' = pool \\ [h,end]
 
 prb68 :: IO Int
-prb68 = return (read $ concat $ map show (head xs))
+prb68 = return (read $ concatMap show (head xs))
   where xs = [x | a0 <- firstArms
                 , x <- completeNGon (nngon-1) a0 (pool0 \\ a0)
                 , not (null x)]

@@ -15,5 +15,5 @@ removeLeft n' = remove n' 10
 
 prb37 :: IO Int
 prb37 = return $ sum $ take 11 $ filter p $ dropWhile (<10) $ primesTo 1000000
-  where p x = and (map isPrime $ removeRight x) &&
-              and (map isPrime $ removeLeft x)
+  where p x = all isPrime (removeRight x) &&
+              all isPrime (removeLeft x)

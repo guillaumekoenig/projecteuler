@@ -7,7 +7,7 @@ module Prb.Prb060 (prb60) where
 import Lib.IsPrime (primesTo, isPrime)
 
 ilog10 :: Int -> Int
-ilog10 = floor . (/ (log ten)) . log . fromIntegral
+ilog10 = floor . logBase ten . fromIntegral
   where ten = 10 :: Double
 
 primePair :: Int -> Int -> Bool

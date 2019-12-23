@@ -61,7 +61,7 @@ sol = runST $ do
             {-# INLINE p #-}
             sign k m = if odd k then m else -m
             {-# INLINE sign #-}
-            modMM m = if m<0 then m+10^6 else if m>=10^6 then m-10^6 else m
+            modMM m | m<0 = m+10^6 | m>=10^6 = m-10^6 | otherwise = m
             {-# INLINE modMM #-}
         m <- p 1 1 4 2 0
         if m == 0

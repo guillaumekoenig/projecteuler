@@ -7,7 +7,7 @@ module Lib.BellmanFord (
 ) where
 
 import Data.Array.Unboxed
-import Control.Monad (foldM)
+import Control.Monad (foldM, unless)
 import Data.Array.ST
 
 type Matrix = UArray (Int,Int) Int
@@ -35,7 +35,7 @@ bellmanFord matrix0 startingPoints directions = runSTUArray $ do
         v <- readArray matrix (x,y)
         let w = matrix0 ! (x',y')
         v' <- readArray matrix (x',y')
-        if (v + w < v')
+        if v + w < v'
           then do {writeArray matrix (x',y') (v + w); return 1}
           else return 0
       update acc edge = do {c <- relax edge; return (acc + c :: Int)}
@@ -45,7 +45,7 @@ bellmanFord matrix0 startingPoints directions = runSTUArray $ do
       -- path from startingPoints. The number of iterations for
       -- problem 83 is way below the theoretical upper bound of # of
       -- nodes minus 1 (11 iterations vs 6399).
-      loop = do {updates <- oneiter; if updates == 0 then return () else loop}
+      loop = do {updates <- oneiter; unless (updates == 0) loop}
   loop
   return matrix
 

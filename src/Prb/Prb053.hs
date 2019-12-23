@@ -8,8 +8,8 @@ choose n k = n * choose (n-1) (k-1) `div` k
 -- binomial coefficients are above the lower bound.
 -- For given n, return length of strip above bound.
 strip :: Int -> Int
-strip n = if null ks then 0 else n-2*(head ks)+1
-  where ks = dropWhile ((<lim) . (choose n)) [1..n`div`2]
+strip n = if null ks then 0 else n-2*head ks+1
+  where ks = dropWhile ((<lim) . choose n) [1..n`div`2]
         lim = 1000000
 
 prb53 :: IO Int

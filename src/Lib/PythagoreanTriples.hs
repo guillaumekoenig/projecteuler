@@ -34,9 +34,9 @@ pythagoreanPrims :: (Triple -> Bool) -> [Triple]
 pythagoreanPrims insideBounds = go (3,4,5) []
   where go (a,b,c) acc
           | (not . insideBounds) (a,b,c) = acc
-          | otherwise = (go (mD (a,b,c))
-                          (go (mA (a,b,c))
-                            (go (mU (a,b,c)) ((a,b,c):acc))))
+          | otherwise = go (mD (a,b,c))
+                        (go (mA (a,b,c))
+                          (go (mU (a,b,c)) ((a,b,c):acc)))
 
 -- Formula from the "early Greeks", again found on:
 -- http://mathworld.wolfram.com/PythagoreanTriple.html

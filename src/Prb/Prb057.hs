@@ -10,4 +10,4 @@ sqrconv (a,b) = (a'`div`g,b'`div`g)
 
 prb57 :: IO Int
 prb57 = return.length.filter f.take 1000 $ iterate sqrconv (1,2)
-  where f (x,y) = (length $ show $ x + y) > (length $ show $ y)
+  where f (x,y) = length (show $ x + y) > length (show y)

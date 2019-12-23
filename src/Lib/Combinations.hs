@@ -12,7 +12,7 @@ combinations' :: (a -> [a] -> [a]) -> Int -> [a] -> [[a]]
 combinations' next k pool0 = map reverse (go pool0 [] [])
   where go pool xs acc
           | length xs == k = xs:acc
-          | True = snd $ foldr f ([],acc) pool
+          | otherwise = snd $ foldr f ([],acc) pool
           where f x (ps,acc') = (x:ps,go (next x ps) (x:xs) acc')
 
 -- Combinations with repetition

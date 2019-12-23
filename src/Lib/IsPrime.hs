@@ -2,6 +2,7 @@ module Lib.IsPrime (isPrime, primeFactors, primeFactors2, primesTo, divisors) wh
 
 import Lib.Isqrt (isqrt)
 
+import Control.Monad (when)
 import Data.Array.ST (runSTUArray)
 import Data.Array.Base (newArray, assocs, unsafeRead, unsafeWrite)
 
@@ -9,15 +10,15 @@ import Data.Array.Base (newArray, assocs, unsafeRead, unsafeWrite)
 isPrime :: Int -> Bool
 isPrime n
   | n <= 3 = n > 1
-  | n`rem`2 == 0 || n`rem`3 == 0 = False
+  | even n || n`rem`3 == 0 = False
   | otherwise = not $ or [n`rem`i == 0 || n`rem`(i+2) == 0|i<-[5,11..isqrt n]]
 
 primeFactors2 :: Int -> [(Int,Int)]
 primeFactors2 n
-  | n`rem`2 == 0 = let (n',c) = skip 2 (n`quot`2) in (2,c+1) : go n' 3
+  | even n = let (n',c) = skip 2 (n`quot`2) in (2,c+1) : go n' 3
   | otherwise = go n 3
   where go m p
-          | p > isqrt m = if m > 1 then [(m,1)] else []
+          | p > isqrt m = [(m,1) | m>1]
           | m`rem`p == 0 = let (n',c) = skip p (m`quot`p) in (p,c+1) : go n' p
           | otherwise = go m (p+2)
         skip p m = case quotRem m p of
@@ -45,9 +46,7 @@ primesTo n = map fst . filter snd . assocs $ runSTUArray $ do
             | i > isqrt n = return ()
             | otherwise = do
                 prime <- unsafeRead a i
-                if prime
-                  then mark a (i+i) i
-                  else return ()
+                when prime (mark a (i+i) i)
                 go a (i+1)
           mark a i s
             | i > n = return ()

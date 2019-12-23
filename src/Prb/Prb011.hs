@@ -19,6 +19,5 @@ largestProd as = maximum $ map check [horiz,verti,lower,upper,lower2,upper2]
         check = maximum.map (\is->check4 [as!ix|ix<-is])
 
 prb11 :: IO Int
-prb11 = return =<< run =<< parse =<< readFile "data/grid.txt"
-  where parse = pure . listArray ((1,1),(20,20)) . map read . words
-        run = pure . largestProd
+prb11 = largestProd . parse <$> readFile "data/grid.txt"
+  where parse = listArray ((1,1),(20,20)) . map read . words
