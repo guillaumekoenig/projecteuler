@@ -1,7 +1,7 @@
 module Lib.Memoize (memoize) where
 
 import Control.Monad.ST (ST)
-import Data.Array.Base (newArray, unsafeRead, unsafeWrite)
+import Data.Array.Base (newArray, readArray, writeArray)
 import Data.Array.ST (STUArray)
 
 -- When you have so many parameters, maybe that's when to...  define a
@@ -13,10 +13,10 @@ memoize (lo,hi) f computation = do
   arr <- newArray (lo,hi) 0 :: ST s (STUArray s Int Int)
   let memo k
         | lo <= k && k <= hi = do
-            x <- unsafeRead arr k
+            x <- readArray arr k
             case x of
               0 -> do x' <- f memo k
-                      unsafeWrite arr k x'
+                      writeArray arr k x'
                       pure x'
               _ -> pure x
         | otherwise = f memo k
