@@ -14,6 +14,7 @@ executable projecteuler
                        Lib.ContinuedFraction,
                        Lib.Digits,
                        Lib.FoldUniq,
+                       Lib.GaussJordan,
                        Lib.IsPerm,
                        Lib.IsPrime,
                        Lib.Isqrt,
